@@ -1,5 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
+<?import javafx.geometry.*?>
 <?import javafx.scene.canvas.*?>
 <?import javafx.scene.chart.*?>
 <?import java.lang.*?>
@@ -10,7 +11,7 @@
 
 <AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="sample.Controller">
     <children>
-        <LineChart fx:id="MyChart" layoutX="193.0" prefHeight="400.0" prefWidth="400.0" title="Functions" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="193.0" AnchorPane.rightAnchor="7.0" AnchorPane.topAnchor="0.0">
+        <LineChart fx:id="MyChart" layoutX="208.0" prefHeight="400.0" prefWidth="391.0" title="Functions" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="203.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
             <xAxis>
                 <NumberAxis label="x" side="BOTTOM" />
             </xAxis>
@@ -18,51 +19,56 @@
                 <NumberAxis label="y" side="LEFT" />
             </yAxis>
         </LineChart>
-      <Pane prefHeight="400.0" prefWidth="201.0">
+      <AnchorPane layoutX="1.0" layoutY="312.0" prefHeight="88.0" prefWidth="200.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="1.0">
          <children>
-            <Separator layoutX="199.0" orientation="VERTICAL" prefHeight="400.0" prefWidth="7.0" />
-            <Accordion prefHeight="176.0" prefWidth="202.0">
-              <panes>
-                <TitledPane animated="false" expanded="false" text="Initial">
-                  <content>
-                    <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0">
-                           <children>
-                              <CheckBox layoutX="138.0" layoutY="42.0" mnemonicParsing="false" text="Plot" />
-                              <TextField layoutX="21.0" layoutY="14.0" prefHeight="27.0" prefWidth="70.0" />
-                           </children>
-                        </AnchorPane>
-                  </content>
-                </TitledPane>
-                <TitledPane animated="false" expanded="false" text="Euler">
-                  <content>
-                    <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0">
-                           <children>
-                              <CheckBox fx:id="eulerCheckBox" layoutX="138.0" layoutY="42.0" mnemonicParsing="false" onAction="#approxWithEuler" text="Plot" />
-                           </children>
-                        </AnchorPane>
-                  </content>
-                </TitledPane>
-                <TitledPane animated="false" expanded="false" prefHeight="90.0" prefWidth="202.0" text="Improved Euler">
-                  <content>
-                    <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0">
-                           <children>
-                              <CheckBox layoutX="138.0" layoutY="42.0" mnemonicParsing="false" text="Plot" />
-                           </children>
-                        </AnchorPane>
-                  </content>
-                </TitledPane>
-                  <TitledPane animated="false" expanded="false" prefHeight="93.0" prefWidth="202.0" text="Runge-Kutta">
-                    <content>
-                      <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0">
-                           <children>
-                              <CheckBox layoutX="138.0" layoutY="44.0" mnemonicParsing="false" text="Plot" />
-                           </children>
-                        </AnchorPane>
-                    </content>
-                  </TitledPane>
-              </panes>
-            </Accordion>
+            <Button alignment="BASELINE_LEFT" layoutX="115.0" layoutY="32.0" mnemonicParsing="false" text="Update" />
+            <Label alignment="BOTTOM_LEFT" layoutX="19.0" layoutY="23.0" prefHeight="0.0" prefWidth="16.0" text="x0" />
+            <Label alignment="BOTTOM_LEFT" layoutX="23.0" layoutY="53.0" text="X" />
+            <TextField alignment="BOTTOM_LEFT" layoutX="41.0" layoutY="48.0" prefHeight="27.0" prefWidth="59.0" />
+            <TextField alignment="BOTTOM_LEFT" layoutX="41.0" layoutY="18.0" prefHeight="27.0" prefWidth="59.0" />
          </children>
-      </Pane>
+      </AnchorPane>
+      <Accordion prefHeight="176.0" prefWidth="202.0">
+        <panes>
+          <TitledPane animated="false" expanded="false" text="Initial">
+            <content>
+              <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0">
+                     <children>
+                        <CheckBox layoutX="138.0" layoutY="42.0" mnemonicParsing="false" text="Plot" />
+                        <TextField layoutX="50.0" layoutY="14.0" prefHeight="27.0" prefWidth="76.0" />
+                        <Label layoutX="31.0" layoutY="19.0" text="N" />
+                     </children>
+                  </AnchorPane>
+            </content>
+          </TitledPane>
+          <TitledPane animated="false" expanded="false" text="Euler">
+            <content>
+              <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0">
+                     <children>
+                        <CheckBox fx:id="eulerCheckBox" layoutX="138.0" layoutY="42.0" mnemonicParsing="false" onAction="#approxWithEuler" text="Plot" />
+                     </children>
+                  </AnchorPane>
+            </content>
+          </TitledPane>
+          <TitledPane animated="false" expanded="false" prefHeight="90.0" prefWidth="202.0" text="Improved Euler">
+            <content>
+              <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0">
+                     <children>
+                        <CheckBox layoutX="138.0" layoutY="42.0" mnemonicParsing="false" text="Plot" />
+                     </children>
+                  </AnchorPane>
+            </content>
+          </TitledPane>
+            <TitledPane animated="false" expanded="false" prefHeight="93.0" prefWidth="202.0" text="Runge-Kutta">
+              <content>
+                <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0">
+                     <children>
+                        <CheckBox layoutX="138.0" layoutY="44.0" mnemonicParsing="false" text="Plot" />
+                     </children>
+                  </AnchorPane>
+              </content>
+            </TitledPane>
+        </panes>
+      </Accordion>
     </children>
 </AnchorPane>
