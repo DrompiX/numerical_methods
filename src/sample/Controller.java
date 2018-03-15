@@ -16,7 +16,7 @@ public class Controller implements Initializable {
 
     @FXML private LineChart<Number, Number> MyChart;
     @FXML private CheckBox eulerCheckBox;
-    Series eulerSeries;
+    private Series eulerSeries;
     private int N = 30;
     private double x[], x0 = 1.7, y0, X = 9, h;
 
@@ -24,7 +24,7 @@ public class Controller implements Initializable {
 
     @Override
     public void initialize(URL url, ResourceBundle rb) {
-        y0 = initialFunction(x0);
+        y0 = exactSolution(x0);
 
 
         x = new double[N];
@@ -62,7 +62,7 @@ public class Controller implements Initializable {
 
     }
 
-    private double initialFunction(double x) {
+    private double exactSolution(double x) {
         final double C = 64.4198735;
         return 3 * Math.pow(Math.E, 2 * x) / (C - Math.pow(Math.E, 3 * x));
     }
