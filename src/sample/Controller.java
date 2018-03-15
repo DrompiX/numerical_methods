@@ -32,14 +32,14 @@ public class Controller implements Initializable {
             x[i] = x[i - 1] + h;
         }
 
-        for (int i = 0; i < N - 1; i++) {
-            // Euler
-            y[i + 1] = y[i] + h * (Math.pow(y[i], 2) * Math.exp(x[i]) + 2 * y[i]);
-            // Real
+        for (int i = 0; i < N; i++) {
+//            // Euler
+//            y[i + 1] = y[i] + h * (Math.pow(y[i], 2) * Math.exp(x[i]) + 2 * y[i]);
+//            // Real
             y2[i] = initialFunction(x[i]);
         }
-        y2[N - 1] = initialFunction(x[N - 1]);
-
+//        y2[N - 1] = initialFunction(x[N - 1]);
+        y = approxWithEuler(x, y0, N, h);
         Series eqSeries = new Series();
         eqSeries.setName("Euler");
         Series init = new Series();
@@ -58,5 +58,13 @@ public class Controller implements Initializable {
     private double initialFunction(double x) {
         final double C = 64.4198735;
         return 3 * Math.pow(Math.E, 2 * x) / (C - Math.pow(Math.E, 3 * x));
+    }
+
+    private double[] approxWithEuler(final double[] x, double y0, int N, double h) {
+        double y[] = new double[N];
+        y[0] = y0;
+        for (int i = 0; i < N - 1; i++)
+            y[i + 1] = y[i] + h * (Math.pow(y[i], 2) * Math.exp(x[i]) + 2 * y[i]);
+        return y;
     }
 }
