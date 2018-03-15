@@ -16,28 +16,29 @@ public class Controller implements Initializable {
 
     @FXML private LineChart<Number, Number> MyChart;
     @FXML private CheckBox eulerCheckBox;
-    private Series eulerSeries;
+    private EulerMethod euler;
     private int N = 30;
-    private double x[], x0 = 1.7, y0, X = 9, h;
+    private double /*x[],*/ x0 = 1.7, y0, X = 9;//, h;
 
     // Variant 23 - y^2*e^x - 2y, y(1.7) = -0.9025147, x in [1.7, 9]
 
     @Override
     public void initialize(URL url, ResourceBundle rb) {
-        y0 = exactSolution(x0);
+        euler = new EulerMethod(MyChart);
+//        y0 = exactSolution(x0);
 
 
-        x = new double[N];
-        x[0] = x0;
-
-        h = (X - x0) / N;
+//        x = new double[N];
+//        x[0] = x0;
+//
+//        h = (X - x0) / N;
 //        double y[] = new double[N];
 //        double y2[] = new double[N];
 
 //        y[0] = y0;
-        for (int i = 1; i < N; i++) {
-            x[i] = x[i - 1] + h;
-        }
+//        for (int i = 1; i < N; i++) {
+//            x[i] = x[i - 1] + h;
+//        }
 
 //        for (int i = 0; i < N; i++) {
 ////            // Euler
@@ -69,23 +70,9 @@ public class Controller implements Initializable {
 
     @FXML
     private void approxWithEuler() {
-        if (eulerCheckBox.isSelected()) {
-            eulerSeries = makeEulerSeries();
-            eulerSeries.setName("Euler");
-            MyChart.getData().addAll(eulerSeries);
-        } else {
-            MyChart.getData().removeAll(eulerSeries);
-        }
-    }
-
-    private Series makeEulerSeries() {
-        double y[] = new double[N];
-        y[0] = y0;
-        for (int i = 0; i < N - 1; i++)
-            y[i + 1] = y[i] + h * (Math.pow(y[i], 2) * Math.exp(x[i]) + 2 * y[i]);
-        Series eSeries = new Series();
-        for (int i = 0; i < N; i++)
-            eSeries.getData().add(new Data(x[i], y[i]));
-        return eSeries;
+        if (eulerCheckBox.isSelected())
+            euler.display(x0, exactSolution(x0), X, N);
+        else
+            euler.hide();
     }
 }
