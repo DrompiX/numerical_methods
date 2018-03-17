@@ -17,7 +17,7 @@ public class Controller implements Initializable {
     @FXML private LineChart<Number, Number> MyChart;
     @FXML private CheckBox eulerCheckBox;
     private EulerMethod euler;
-    private int N = 30;
+    private int N = 25;
     private double /*x[],*/ x0 = 1.7, y0, X = 9;//, h;
 
     // Variant 23 - y^2*e^x - 2y, y(1.7) = -0.9025147, x in [1.7, 9]
