@@ -6,11 +6,14 @@ import javafx.scene.chart.LineChart;
 
 
 import java.net.URL;
+import java.util.IllegalFormatException;
 import java.util.ResourceBundle;
 
 import javafx.scene.control.Button;
 import javafx.scene.control.CheckBox;
 import javafx.scene.control.TextField;
+
+import javax.activity.InvalidActivityException;
 
 
 public class Controller implements Initializable {
@@ -29,7 +32,7 @@ public class Controller implements Initializable {
     private EulerMethod euler;
     private ImprovedEulerMethod improvedEuler;
     private RungeKuttaMethod rungeKutta;
-    private int N = 25;
+    private int N = 25; // N such that h <= 0.6
     private double /*x[],*/ x0 = 1.7, y0, X = 9;//, h;
 
     // Variant 23 - y^2*e^x - 2y, y(1.7) = -0.9025147, x in [1.7, 9]
@@ -81,11 +84,27 @@ public class Controller implements Initializable {
 
     @FXML
     private void update() {
-        x0 = Double.valueOf(x0field.getText());
-        X = Double.valueOf(Xfield.getText());
+        try {
+            double x0 = Double.valueOf(x0field.getText());
+            double X = Double.valueOf(Xfield.getText());
+            if ((X - x0) / N > 0.6 || X >= x0 || x0 >= 1.5)
+                throw new InvalidActivityException("Invalid range");
+            else {
+                this.x0 = x0;
+                this.X = X;
+            }
+        } catch (Exception e) {
+            System.out.println(e.getMessage());
+            return;
+        }
+
         buildExact();
         approxWithEuler();
         approxWithImprovedEuler();
         approxWithRungeKutta();
+    }
+
+    private boolean isGridNumValid(int n) {
+        return N >= (X - x0) / 0.6 ;
     }
 }
