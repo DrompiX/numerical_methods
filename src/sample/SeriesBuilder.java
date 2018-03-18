@@ -2,7 +2,6 @@ package sample;
 
 import javafx.scene.chart.LineChart;
 import javafx.scene.chart.XYChart.Series;
-import javafx.scene.chart.XYChart.Data;
 
 public abstract class SeriesBuilder {
     Series methodSeries;

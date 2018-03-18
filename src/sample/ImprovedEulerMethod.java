@@ -8,7 +8,6 @@ public class ImprovedEulerMethod extends ApproximationMethod {
 
     ImprovedEulerMethod(LineChart<Number, Number> chart) {
         super(chart);
-//        methodSeries = new Series();
     }
 
     @Override

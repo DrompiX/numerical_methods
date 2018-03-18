@@ -7,7 +7,10 @@ import javafx.scene.chart.LineChart;
 
 import java.net.URL;
 import java.util.ResourceBundle;
+
+import javafx.scene.control.Button;
 import javafx.scene.control.CheckBox;
+import javafx.scene.control.TextField;
 
 
 public class Controller implements Initializable {
@@ -17,6 +20,10 @@ public class Controller implements Initializable {
     @FXML private CheckBox eulerCheckBox;
     @FXML private CheckBox imprEulerCheckBox;
     @FXML private CheckBox rKuttaCheckBox;
+
+    @FXML private TextField x0field;
+    @FXML private TextField Xfield;
+    @FXML private Button updateChart;
 
     private ExactSolution exactSolution;
     private EulerMethod euler;
@@ -33,45 +40,52 @@ public class Controller implements Initializable {
         improvedEuler = new ImprovedEulerMethod(MyChart);
         rungeKutta = new RungeKuttaMethod(MyChart);
         exactSolution = new ExactSolution(MyChart);
-//        if (euler.methodSeries == improvedEuler.methodSeries)
-//            System.out.println("KEK");
     }
-
-//    private double exactSolution(double x) {
-//        final double C = 64.4198735;
-//        return 3 * Math.pow(Math.E, 2 * x) / (C - Math.pow(Math.E, 3 * x));
-//    }
 
     @FXML
     private void buildExact() {
         if (exactCheckBox.isSelected()) {
-
+            exactSolution.hide();
+            exactSolution.display(x0, exactSolution.y(x0), X, N);
         } else {
-
+            exactSolution.hide();
         }
     }
 
     @FXML
     private void approxWithEuler() {
-        if (eulerCheckBox.isSelected())
+        if (eulerCheckBox.isSelected()) {
+            euler.hide(); // TODO: test it
             euler.display(x0, exactSolution.y(x0), X, N);
-        else
+        } else
             euler.hide();
     }
 
     @FXML
     private void approxWithImprovedEuler() {
-        if (imprEulerCheckBox.isSelected())
+        if (imprEulerCheckBox.isSelected()) {
+            improvedEuler.hide();
             improvedEuler.display(x0, exactSolution.y(x0), X, N);
-        else
+        } else
             improvedEuler.hide();
     }
 
     @FXML
     private void approxWithRungeKutta() {
-        if (rKuttaCheckBox.isSelected())
-            rungeKutta.display(x0, exactSolution.y(x0), X, N);
-        else
+        if (rKuttaCheckBox.isSelected()) {
             rungeKutta.hide();
+            rungeKutta.display(x0, exactSolution.y(x0), X, N);
+        } else
+            rungeKutta.hide();
+    }
+
+    @FXML
+    private void update() {
+        x0 = Double.valueOf(x0field.getText());
+        X = Double.valueOf(Xfield.getText());
+        buildExact();
+        approxWithEuler();
+        approxWithImprovedEuler();
+        approxWithRungeKutta();
     }
 }

@@ -9,7 +9,7 @@
 <?import javafx.scene.control.*?>
 <?import javafx.scene.layout.*?>
 
-<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="sample.Controller">
+<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="480.0" prefWidth="720.0" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="sample.Controller">
     <children>
         <LineChart fx:id="MyChart" layoutX="208.0" prefHeight="400.0" prefWidth="391.0" title="Functions" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="203.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
             <xAxis>
@@ -21,11 +21,11 @@
         </LineChart>
       <AnchorPane layoutX="1.0" layoutY="312.0" prefHeight="88.0" prefWidth="200.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="1.0">
          <children>
-            <Button alignment="BASELINE_LEFT" layoutX="115.0" layoutY="32.0" mnemonicParsing="false" text="Update" />
+            <Button fx:id="updateChart" alignment="BASELINE_LEFT" layoutX="115.0" layoutY="32.0" mnemonicParsing="false" onAction="#update" text="Update" />
             <Label alignment="BOTTOM_LEFT" layoutX="19.0" layoutY="23.0" prefHeight="0.0" prefWidth="16.0" text="x0" />
             <Label alignment="BOTTOM_LEFT" layoutX="23.0" layoutY="53.0" text="X" />
-            <TextField alignment="BOTTOM_LEFT" layoutX="41.0" layoutY="48.0" prefHeight="27.0" prefWidth="59.0" />
-            <TextField alignment="BOTTOM_LEFT" layoutX="41.0" layoutY="18.0" prefHeight="27.0" prefWidth="59.0" />
+            <TextField fx:id="Xfield" alignment="BOTTOM_LEFT" layoutX="41.0" layoutY="48.0" prefHeight="27.0" prefWidth="59.0" />
+            <TextField alignment="BOTTOM_LEFT" layoutX="41.0" layoutY="18.0" prefHeight="27.0" prefWidth="59.0" fx:id="x0field" />
          </children>
       </AnchorPane>
       <Accordion prefHeight="163.0" prefWidth="202.0">
@@ -34,7 +34,7 @@
             <content>
               <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0">
                      <children>
-                        <CheckBox fx:id="exactCheckBox" layoutX="138.0" layoutY="19.0" mnemonicParsing="false" text="Plot" />
+                        <CheckBox fx:id="exactCheckBox" layoutX="138.0" layoutY="19.0" mnemonicParsing="false" onAction="#buildExact" text="Plot" />
                         <TextField layoutX="41.0" layoutY="14.0" prefHeight="27.0" prefWidth="76.0" />
                         <Label layoutX="16.0" layoutY="20.0" text="N" />
                      </children>

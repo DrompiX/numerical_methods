@@ -1,15 +1,13 @@
 package sample;
 
 import javafx.scene.chart.LineChart;
+import javafx.scene.chart.XYChart.Data;
 import javafx.scene.chart.XYChart.Series;
 
 public class ExactSolution extends SeriesBuilder {
-//    private LineChart chart;
 
     ExactSolution(LineChart<Number, Number> chart) {
         super(chart);
-//        this.chart = chart;
-//        methodSeries = new Series();
     }
 
     double y(double x) {
@@ -30,5 +28,13 @@ public class ExactSolution extends SeriesBuilder {
     @Override
     protected void makeSeries() {
         initialize();
+
+        for (int i = 0; i < N; i++)
+            y[i] = y(x[i]);
+
+        methodSeries = new Series();
+        methodSeries.setName("Exact");
+        for (int i = 0; i < N; i++)
+            methodSeries.getData().add(new Data(x[i], y[i]));
     }
 }
