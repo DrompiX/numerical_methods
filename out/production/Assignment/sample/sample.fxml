@@ -30,11 +30,11 @@
       </AnchorPane>
       <Accordion prefHeight="163.0" prefWidth="202.0">
         <panes>
-          <TitledPane animated="false" expanded="false" prefHeight="100.0" prefWidth="201.0" text="Initial">
+          <TitledPane animated="false" expanded="false" prefHeight="100.0" prefWidth="201.0" text="Exact">
             <content>
               <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0">
                      <children>
-                        <CheckBox layoutX="138.0" layoutY="19.0" mnemonicParsing="false" text="Plot" />
+                        <CheckBox fx:id="exactCheckBox" layoutX="138.0" layoutY="19.0" mnemonicParsing="false" text="Plot" />
                         <TextField layoutX="41.0" layoutY="14.0" prefHeight="27.0" prefWidth="76.0" />
                         <Label layoutX="16.0" layoutY="20.0" text="N" />
                      </children>
@@ -56,7 +56,7 @@
             <content>
               <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0">
                      <children>
-                        <CheckBox layoutX="138.0" layoutY="19.0" mnemonicParsing="false" text="Plot" />
+                        <CheckBox fx:id="imprEulerCheckBox" layoutX="138.0" layoutY="19.0" mnemonicParsing="false" onAction="#approxWithImprovedEuler" text="Plot" />
                         <Label layoutX="17.0" layoutY="19.0" text="N" />
                         <TextField layoutX="42.0" layoutY="14.0" prefHeight="27.0" prefWidth="76.0" />
                      </children>
@@ -67,7 +67,7 @@
               <content>
                 <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="190.0" prefWidth="200.0">
                      <children>
-                        <CheckBox layoutX="138.0" layoutY="18.0" mnemonicParsing="false" text="Plot" />
+                        <CheckBox fx:id="rKuttaCheckBox" layoutX="138.0" layoutY="18.0" mnemonicParsing="false" onAction="#approxWithRungeKutta" text="Plot" />
                         <Label layoutX="17.0" layoutY="19.0" text="N" />
                         <TextField layoutX="44.0" layoutY="14.0" prefHeight="27.0" prefWidth="76.0" />
                      </children>
