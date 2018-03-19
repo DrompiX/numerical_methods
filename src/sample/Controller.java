@@ -6,7 +6,6 @@ import javafx.scene.chart.LineChart;
 
 
 import java.net.URL;
-import java.util.IllegalFormatException;
 import java.util.ResourceBundle;
 
 import javafx.scene.control.Button;
@@ -28,12 +27,17 @@ public class Controller implements Initializable {
     @FXML private TextField Xfield;
     @FXML private Button updateChart;
 
+    @FXML private TextField exactN;
+    @FXML private TextField eulerN;
+    @FXML private TextField imprEulerN;
+    @FXML private TextField rKuttaN;
+
     private ExactSolution exactSolution;
     private EulerMethod euler;
     private ImprovedEulerMethod improvedEuler;
     private RungeKuttaMethod rungeKutta;
     private int N = 25; // N such that h <= 0.6
-    private double /*x[],*/ x0 = 1.7, y0, X = 9;//, h;
+    private double x0 = 1.7, X = 9;
 
     // Variant 23 - y^2*e^x - 2y, y(1.7) = -0.9025147, x in [1.7, 9]
 
@@ -87,7 +91,7 @@ public class Controller implements Initializable {
         try {
             double x0 = Double.valueOf(x0field.getText());
             double X = Double.valueOf(Xfield.getText());
-            if ((X - x0) / N > 0.6 || X >= x0 || x0 >= 1.5)
+            if ((X - x0) / N > 0.6 || X < x0 || x0 < 1.5)
                 throw new InvalidActivityException("Invalid range");
             else {
                 this.x0 = x0;
@@ -102,6 +106,11 @@ public class Controller implements Initializable {
         approxWithEuler();
         approxWithImprovedEuler();
         approxWithRungeKutta();
+    }
+
+    @FXML
+    private void changeGridExact() {
+        // TODO: finish with N fields
     }
 
     private boolean isGridNumValid(int n) {
