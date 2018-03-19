@@ -35,7 +35,7 @@
               <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0">
                      <children>
                         <CheckBox fx:id="exactCheckBox" layoutX="138.0" layoutY="19.0" mnemonicParsing="false" onAction="#buildExact" text="Plot" />
-                        <TextField fx:id="exactN" layoutX="41.0" layoutY="14.0" onAction="#changeGrid" prefHeight="27.0" prefWidth="76.0" />
+                        <TextField fx:id="exactN" layoutX="41.0" layoutY="14.0" onAction="#changeGridExact" prefHeight="27.0" prefWidth="76.0" />
                         <Label layoutX="16.0" layoutY="20.0" text="N" />
                      </children>
                   </AnchorPane>
