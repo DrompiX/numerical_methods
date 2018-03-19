@@ -23,14 +23,15 @@ public class Controller implements Initializable {
     @FXML private CheckBox imprEulerCheckBox;
     @FXML private CheckBox rKuttaCheckBox;
 
+    @FXML private TextField NField;
     @FXML private TextField x0field;
     @FXML private TextField Xfield;
-    @FXML private Button updateChart;
+//    @FXML private Button updateChart;
 
-    @FXML private TextField exactN;
-    @FXML private TextField eulerN;
-    @FXML private TextField imprEulerN;
-    @FXML private TextField rKuttaN;
+//    @FXML private TextField exactN;
+//    @FXML private TextField eulerN;
+//    @FXML private TextField imprEulerN;
+//    @FXML private TextField rKuttaN;
 
     private ExactSolution exactSolution;
     private EulerMethod euler;
@@ -47,6 +48,9 @@ public class Controller implements Initializable {
         improvedEuler = new ImprovedEulerMethod(MyChart);
         rungeKutta = new RungeKuttaMethod(MyChart);
         exactSolution = new ExactSolution(MyChart);
+        NField.setText("25");
+        x0field.setText("1.7");
+        Xfield.setText("9");
     }
 
     @FXML
@@ -89,11 +93,13 @@ public class Controller implements Initializable {
     @FXML
     private void update() {
         try {
+            int N = Integer.valueOf(NField.getText());
             double x0 = Double.valueOf(x0field.getText());
             double X = Double.valueOf(Xfield.getText());
             if ((X - x0) / N > 0.6 || X < x0 || x0 < 1.5)
                 throw new InvalidActivityException("Invalid range");
             else {
+                this.N = N;
                 this.x0 = x0;
                 this.X = X;
             }
@@ -113,7 +119,8 @@ public class Controller implements Initializable {
         // TODO: finish with N fields
     }
 
-    private boolean isGridNumValid(int n) {
-        return N >= (X - x0) / 0.6 ;
-    }
+//    private boolean isGridNumValid(int n) {
+//        return N >= (X - x0) / 0.6 ;
+//    }
+
 }
