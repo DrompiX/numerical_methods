@@ -11,13 +11,16 @@ public class Main extends Application {
     @Override
     public void start(Stage primaryStage) throws Exception{
         Parent root = FXMLLoader.load(getClass().getResource("sample.fxml"));
-        primaryStage.setTitle("Hello World");
-//        primaryStage.setScene(new Scene(root, 300, 275));
-//        primaryStage.show();
-
         Scene scene = new Scene(root);
-        primaryStage.setScene(scene);
+        configureStage(primaryStage, scene);
         primaryStage.show();
+    }
+
+    private void configureStage(Stage stage, Scene scene) {
+        stage.setScene(scene);
+        stage.setTitle("Numerical Methods");
+        stage.setMinHeight(400);
+        stage.setMinWidth(600);
     }
 
 
