@@ -10,21 +10,23 @@
    <tabs>
       <Tab closable="false" text="Functions">
          <content>
-            <AnchorPane prefHeight="480.0" prefWidth="720.0">
+            <AnchorPane prefHeight="700" prefWidth="650">
                <children>
                   <SplitPane dividerPositions="0.26740947075208915" layoutY="3.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
                      <items>
                         <AnchorPane maxWidth="-Infinity" minWidth="-Infinity" prefHeight="478.0" prefWidth="188.0">
                            <children>
-                              <AnchorPane prefHeight="115.0" prefWidth="200.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0">
+                              <AnchorPane prefHeight="158.0" prefWidth="188.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0">
                                  <children>
-                                    <Button fx:id="updateChart" alignment="CENTER" layoutX="111.0" layoutY="45.0" mnemonicParsing="false" onAction="#update" text="Update" />
-                                    <Label alignment="CENTER" layoutX="18.0" layoutY="50.0" prefHeight="0.0" prefWidth="16.0" text="x0" />
-                                    <Label alignment="CENTER" layoutX="22.0" layoutY="80.0" text="X" />
-                                    <TextField fx:id="Xfield" alignment="CENTER" layoutX="40.0" layoutY="75.0" prefHeight="27.0" prefWidth="59.0" />
-                                    <TextField alignment="CENTER" layoutX="40.0" layoutY="45.0" prefHeight="27.0" prefWidth="59.0" fx:id="x0field" />
-                                    <TextField fx:id="NField" alignment="CENTER" layoutX="40.0" layoutY="15.0" prefHeight="27.0" prefWidth="59.0" />
-                                    <Label alignment="CENTER" layoutX="21.0" layoutY="20.0" text="N" />
+                                    <Button fx:id="updateChart" alignment="CENTER" layoutX="62.0" layoutY="112.0" mnemonicParsing="false" onAction="#update" text="Update" />
+                                    <Label alignment="CENTER" layoutX="10.0" layoutY="64.0" prefHeight="0.0" prefWidth="16.0" text="x0" />
+                                    <Label alignment="CENTER" layoutX="105.0" layoutY="19.0" text="X" />
+                                    <TextField fx:id="Xfield" alignment="CENTER" layoutX="121.0" layoutY="14.0" prefHeight="27.0" prefWidth="59.0" />
+                                    <TextField alignment="CENTER" layoutX="31.0" layoutY="59.0" prefHeight="27.0" prefWidth="59.0" fx:id="x0field" />
+                                    <TextField fx:id="NField" alignment="CENTER" layoutX="31.0" layoutY="15.0" prefHeight="27.0" prefWidth="59.0" />
+                                    <Label alignment="CENTER" layoutX="13.0" layoutY="20.0" text="N" />
+                                    <TextField fx:id="y0field" alignment="CENTER" layoutX="120.0" layoutY="60.0" prefHeight="27.0" prefWidth="59.0" />
+                                    <Label alignment="CENTER" layoutX="102.0" layoutY="65.0" text="y0" />
                                  </children>
                               </AnchorPane>
                               <GridPane prefHeight="117.0" prefWidth="141.0" AnchorPane.leftAnchor="20.0" AnchorPane.topAnchor="20.0">
@@ -67,21 +69,33 @@
                               </GridPane>
                            </children>
                         </AnchorPane>
-                        <LineChart fx:id="MyChart" layoutX="167.0" layoutY="1.0" prefHeight="478.0" prefWidth="366.0" title="Functions" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="167.0" AnchorPane.rightAnchor="15.0" AnchorPane.topAnchor="5.0">
-                           <xAxis>
-                              <NumberAxis label="x" side="BOTTOM" />
-                           </xAxis>
-                           <yAxis>
-                              <NumberAxis label="y" side="LEFT" />
-                           </yAxis>
-                        </LineChart>
+                        <SplitPane dividerPositions="0.5" orientation="VERTICAL" prefHeight="260.0" prefWidth="522.0">
+                           <items>
+                              <LineChart fx:id="functionChart" layoutX="167.0" layoutY="1.0" legendSide="RIGHT" prefHeight="370.0" prefWidth="522.0" title="Functions" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="167.0" AnchorPane.rightAnchor="15.0" AnchorPane.topAnchor="5.0">
+                                 <xAxis>
+                                    <NumberAxis label="x" side="BOTTOM" />
+                                 </xAxis>
+                                 <yAxis>
+                                    <NumberAxis label="y" side="LEFT" />
+                                 </yAxis>
+                              </LineChart>
+                              <LineChart fx:id="errorChart" layoutX="10.0" layoutY="10.0" legendSide="RIGHT" prefHeight="370.0" prefWidth="522.0" title="Errors">
+                                 <xAxis>
+                                    <NumberAxis label="x" side="BOTTOM" />
+                                 </xAxis>
+                                 <yAxis>
+                                    <NumberAxis label="y" side="LEFT" />
+                                 </yAxis>
+                              </LineChart>
+                           </items>
+                        </SplitPane>
                      </items>
                   </SplitPane>
                </children>
             </AnchorPane>
          </content>
       </Tab>
-      <Tab closable="false" text="Errors">
+      <Tab closable="false" text="Truncation Errors">
         <content>
           <AnchorPane prefHeight="480.0" prefWidth="720.0">
                <children>

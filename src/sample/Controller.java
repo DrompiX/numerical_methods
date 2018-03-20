@@ -8,7 +8,7 @@ import javafx.scene.chart.LineChart;
 import java.net.URL;
 import java.util.ResourceBundle;
 
-import javafx.scene.control.Button;
+import javafx.scene.chart.XYChart.Series;
 import javafx.scene.control.CheckBox;
 import javafx.scene.control.TextField;
 
@@ -17,7 +17,8 @@ import javax.activity.InvalidActivityException;
 
 public class Controller implements Initializable {
 
-    @FXML private LineChart<Number, Number> MyChart;
+    @FXML private LineChart<Number, Number> functionChart;
+    @FXML private LineChart<Number, Number> errorChart;
     @FXML private CheckBox exactCheckBox;
     @FXML private CheckBox eulerCheckBox;
     @FXML private CheckBox imprEulerCheckBox;
@@ -25,6 +26,7 @@ public class Controller implements Initializable {
 
     @FXML private TextField NField;
     @FXML private TextField x0field;
+    @FXML private TextField y0field;
     @FXML private TextField Xfield;
 //    @FXML private Button updateChart;
 
@@ -44,10 +46,10 @@ public class Controller implements Initializable {
 
     @Override
     public void initialize(URL url, ResourceBundle rb) {
-        euler = new EulerMethod(MyChart);
-        improvedEuler = new ImprovedEulerMethod(MyChart);
-        rungeKutta = new RungeKuttaMethod(MyChart);
-        exactSolution = new ExactSolution(MyChart);
+        euler = new EulerMethod(functionChart);
+        improvedEuler = new ImprovedEulerMethod(functionChart);
+        rungeKutta = new RungeKuttaMethod(functionChart);
+        exactSolution = new ExactSolution(functionChart);
         NField.setText("25");
         x0field.setText("1.7");
         Xfield.setText("9");
@@ -65,11 +67,16 @@ public class Controller implements Initializable {
 
     @FXML
     private void approxWithEuler() {
+//        Series errorSeries;
         if (eulerCheckBox.isSelected()) {
             euler.hide(); // TODO: test it
             euler.display(x0, exactSolution.y(x0), X, N);
-        } else
+            euler.displayError(exactSolution.getY());
+//            errorSeries = exactSolution.calculateError(euler.methodSeries);
+//            errorChart.getData().addAll(errorSeries);
+        } else {
             euler.hide();
+        }
     }
 
     @FXML
@@ -96,13 +103,14 @@ public class Controller implements Initializable {
             int N = Integer.valueOf(NField.getText());
             double x0 = Double.valueOf(x0field.getText());
             double X = Double.valueOf(Xfield.getText());
-            if ((X - x0) / N > 0.6 || X < x0 || x0 < 1.5)
-                throw new InvalidActivityException("Invalid range");
-            else {
+            // TODO: to manage incorrect N's
+//            if ((X - x0) / N > 0.6 || X < x0 || x0 < 1.5)
+//                throw new InvalidActivityException("Invalid range");
+//            else {
                 this.N = N;
                 this.x0 = x0;
                 this.X = X;
-            }
+//            }
         } catch (Exception e) {
             System.out.println(e.getMessage());
             return;
@@ -112,11 +120,6 @@ public class Controller implements Initializable {
         approxWithEuler();
         approxWithImprovedEuler();
         approxWithRungeKutta();
-    }
-
-    @FXML
-    private void changeGridExact() {
-        // TODO: finish with N fields
     }
 
 //    private boolean isGridNumValid(int n) {

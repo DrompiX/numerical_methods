@@ -1,11 +1,13 @@
 package sample;
 
 import javafx.scene.chart.LineChart;
+import javafx.scene.chart.XYChart.Series;
 
 public abstract class ApproximationMethod extends SeriesBuilder {
 
-    ApproximationMethod(LineChart<Number, Number> chart) {
-        super(chart);
+    ApproximationMethod(LineChart<Number, Number> funcChart) {//,
+                        //LineChart<Number, Number> errChart) {
+        super(funcChart);
     }
 
     @Override
@@ -22,5 +24,13 @@ public abstract class ApproximationMethod extends SeriesBuilder {
 
     double f(double x, double y) {
         return (Math.pow(y, 2) * Math.exp(x) + 2 * y); //y^2 * e^x + 2y
+    }
+
+    void displayError(double[] exactY) {
+
+    }
+
+    void hideError() {
+
     }
 }

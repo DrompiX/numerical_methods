@@ -24,7 +24,7 @@ public class RungeKuttaMethod extends ApproximationMethod {
         }
 
         methodSeries = new Series();
-        methodSeries.setName("Runge-Kutta");
+        methodSeries.setName("R-Kutta");
         for (int i = 0; i < N; i++)
             methodSeries.getData().add(new Data(x[i], y[i]));
     }

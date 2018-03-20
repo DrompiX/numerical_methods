@@ -19,7 +19,7 @@ public class Main extends Application {
     private void configureStage(Stage stage, Scene scene) {
         stage.setScene(scene);
         stage.setTitle("Numerical Methods");
-        stage.setMinHeight(400);
+        stage.setMinHeight(500);
         stage.setMinWidth(600);
     }
 

@@ -18,7 +18,7 @@ public class ImprovedEulerMethod extends ApproximationMethod {
             y[i + 1] = y[i] + h/2 * (f(x[i], y[i]) + f(x[i + 1], y[i] + h * f(x[i], y[i])));
 
         methodSeries = new Series();
-        methodSeries.setName("Improved Euler");
+        methodSeries.setName("Impr. Euler");
         for (int i = 0; i < N; i++)
             methodSeries.getData().add(new Data(x[i], y[i]));
     }

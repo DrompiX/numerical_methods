@@ -37,4 +37,13 @@ public abstract class SeriesBuilder {
     abstract void hide();
 
     protected abstract void makeSeries();
+
+    public double[] getX() {
+        return x;
+    }
+
+    public double[] getY() {
+        return y;
+    }
+
 }

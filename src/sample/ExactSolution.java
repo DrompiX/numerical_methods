@@ -37,4 +37,17 @@ public class ExactSolution extends SeriesBuilder {
         for (int i = 0; i < N; i++)
             methodSeries.getData().add(new Data(x[i], y[i]));
     }
+
+//    Series calculateError(Series approx) {
+//        double y[] = new double[N];
+//        for (int i = 0; i < N; i++) {
+//            double exactY = this.y[i];//(double)((Data)methodSeries.getData().get(i)).getYValue();
+//            double approxY = (double)((Data)approx.getData().get(i)).getYValue();
+//            y[i] =  Math.abs(exactY - approxY);
+//        }
+//        Series errorSeries = new Series();
+//        for (int i = 0; i < N; i++)
+//            errorSeries.getData().add(new Data(x[i], y[i]));
+//        return errorSeries;
+//    }
 }
