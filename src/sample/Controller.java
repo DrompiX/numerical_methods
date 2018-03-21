@@ -11,9 +11,6 @@ import java.util.ResourceBundle;
 import javafx.scene.control.CheckBox;
 import javafx.scene.control.TextField;
 
-import javax.activity.InvalidActivityException;
-
-
 public class Controller implements Initializable {
 
     @FXML private LineChart<Number, Number> functionChart;
