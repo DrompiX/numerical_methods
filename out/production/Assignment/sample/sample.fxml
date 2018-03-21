@@ -51,7 +51,7 @@
                                           <Font size="15.0" />
                                        </font>
                                     </Label>
-                                    <CheckBox fx:id="exactCheckBox" mnemonicParsing="false" onAction="#buildExact" GridPane.columnIndex="1" />
+                                    <CheckBox fx:id="exactCheckBox" mnemonicParsing="false" onAction="#buildExact" selected="true" GridPane.columnIndex="1" />
                                     <CheckBox fx:id="eulerCheckBox" mnemonicParsing="false" onAction="#approxWithEuler" GridPane.columnIndex="1" GridPane.rowIndex="1" />
                                     <CheckBox fx:id="imprEulerCheckBox" mnemonicParsing="false" onAction="#approxWithImprovedEuler" GridPane.columnIndex="1" GridPane.rowIndex="2" />
                                     <CheckBox fx:id="rKuttaCheckBox" mnemonicParsing="false" onAction="#approxWithRungeKutta" GridPane.columnIndex="1" GridPane.rowIndex="3" />

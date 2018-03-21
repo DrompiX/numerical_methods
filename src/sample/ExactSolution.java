@@ -5,24 +5,31 @@ import javafx.scene.chart.XYChart.Data;
 import javafx.scene.chart.XYChart.Series;
 
 public class ExactSolution extends SeriesBuilder {
+    private double C;
 
     ExactSolution(LineChart<Number, Number> chart) {
         super(chart);
     }
 
     double y(double x) {
-        final double C = 64.4198735;
         return 3 * Math.pow(Math.E, 2 * x) / (C - Math.pow(Math.E, 3 * x));
     }
 
-    void display(double x0, double y0, double X, int N) {
-        setFields(x0, y0, X, N);
-        makeSeries();
-        chart.getData().addAll(methodSeries);
+    private void calculateConstant() {
+        C = (3 * Math.exp(2 * x0) + y0 * Math.exp(3 * x0)) / y0;
+    }
+
+    void display() {
+        hide();
+        calculateConstant();
+        makeSeriesWithNewConditions();
+        chart.getData().add(methodSeries);
     }
 
     void hide() {
-        chart.getData().removeAll(methodSeries);
+        chart.setAnimated(false);
+        chart.getData().remove(methodSeries);
+        chart.setAnimated(true);
     }
 
     @Override
@@ -32,22 +39,15 @@ public class ExactSolution extends SeriesBuilder {
         for (int i = 0; i < N; i++)
             y[i] = y(x[i]);
 
-        methodSeries = new Series();
+        methodSeries = new Series<>();
         methodSeries.setName("Exact");
         for (int i = 0; i < N; i++)
-            methodSeries.getData().add(new Data(x[i], y[i]));
+            methodSeries.getData().add(new Data<>(x[i], y[i]));
     }
 
-//    Series calculateError(Series approx) {
-//        double y[] = new double[N];
-//        for (int i = 0; i < N; i++) {
-//            double exactY = this.y[i];//(double)((Data)methodSeries.getData().get(i)).getYValue();
-//            double approxY = (double)((Data)approx.getData().get(i)).getYValue();
-//            y[i] =  Math.abs(exactY - approxY);
-//        }
-//        Series errorSeries = new Series();
-//        for (int i = 0; i < N; i++)
-//            errorSeries.getData().add(new Data(x[i], y[i]));
-//        return errorSeries;
-//    }
+    double[] getY() {
+        makeSeriesWithNewConditions();
+        return y;
+    }
+
 }

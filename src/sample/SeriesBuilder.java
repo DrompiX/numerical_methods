@@ -4,22 +4,24 @@ import javafx.scene.chart.LineChart;
 import javafx.scene.chart.XYChart.Series;
 
 public abstract class SeriesBuilder {
-    Series methodSeries;
-    LineChart chart;
+    Series<Number, Number> methodSeries;
+    LineChart<Number, Number> chart;
     double x[], y[];
     double x0, y0, X, h;
     int N;
+    private boolean conditionsChanged = true;
 
     SeriesBuilder(LineChart<Number, Number> chart) {
         this.chart = chart;
-        methodSeries = new Series();
+        methodSeries = new Series<>();
     }
 
-    protected void setFields(double x0, double y0, double X, int N) {
+    void setFields(double x0, double y0, double X, int N) {
         this.x0 = x0;
         this.y0 = y0;
         this.X = X;
         this.N = N;
+        conditionsChanged = true;
     }
 
     void initialize() {
@@ -32,18 +34,16 @@ public abstract class SeriesBuilder {
         y[0] = y0;
     }
 
-    abstract void display(double x0, double y0, double X, int N);
+    abstract void display();
 
     abstract void hide();
 
     protected abstract void makeSeries();
 
-    public double[] getX() {
-        return x;
+    void makeSeriesWithNewConditions() {
+        if (conditionsChanged) {
+            makeSeries();
+            conditionsChanged = false;
+        }
     }
-
-    public double[] getY() {
-        return y;
-    }
-
 }
