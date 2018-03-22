@@ -141,6 +141,10 @@
                                     <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
                                  </rowConstraints>
                               </GridPane>
+                              <Label layoutX="10.0" layoutY="153.0" text="N0" />
+                              <Label layoutX="96.0" layoutY="154.0" text="N1" />
+                              <TextField layoutX="35.0" layoutY="149.0" prefHeight="20.0" prefWidth="53.0" />
+                              <TextField layoutX="118.0" layoutY="149.0" prefHeight="20.0" prefWidth="53.0" />
                            </children>
                         </AnchorPane>
                         <LineChart layoutX="167.0" layoutY="1.0" prefHeight="478.0" prefWidth="366.0" title="Errors" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="167.0" AnchorPane.rightAnchor="15.0" AnchorPane.topAnchor="5.0">
