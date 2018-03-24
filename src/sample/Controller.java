@@ -15,21 +15,36 @@ public class Controller implements Initializable {
 
     @FXML private LineChart<Number, Number> functionChart;
     @FXML private LineChart<Number, Number> errorChart;
+    @FXML private LineChart<Number, Number> errorDepChart;
+
+    // Tab 1 checkboxes
     @FXML private CheckBox exactCheckBox;
     @FXML private CheckBox eulerCheckBox;
     @FXML private CheckBox imprEulerCheckBox;
     @FXML private CheckBox rKuttaCheckBox;
 
+    // Tab 1 text fields
     @FXML private TextField NField;
     @FXML private TextField x0field;
     @FXML private TextField y0field;
     @FXML private TextField Xfield;
+
+    // Tab 2 checkboxes
+    @FXML private CheckBox exactCheckBoxT2;
+    @FXML private CheckBox eulerCheckBoxT2;
+    @FXML private CheckBox imprEulerCheckBoxT2;
+    @FXML private CheckBox rKuttaCheckBoxT2;
+
+    // Tab 2 text fields
+    @FXML private TextField N0Field;
+    @FXML private TextField N1Field;
 
     private ExactSolution exactSolution;
     private EulerMethod euler;
     private ImprovedEulerMethod improvedEuler;
     private RungeKuttaMethod rungeKutta;
 
+    //TODO: to correct y(1.7)
     // Variant 23 - y^2*e^x - 2y, y(1.7) = -0.9025147, x in [1.7, 9]
 
     @Override
