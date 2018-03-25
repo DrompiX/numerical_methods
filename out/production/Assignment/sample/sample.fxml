@@ -1,6 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
-<?import java.lang.*?>
 <?import javafx.scene.text.*?>
 <?import javafx.scene.chart.*?>
 <?import javafx.scene.control.*?>
@@ -95,7 +94,7 @@
             </AnchorPane>
          </content>
       </Tab>
-      <Tab closable="false" text="Truncation Errors">
+      <Tab closable="false" text="Error Dependencies">
         <content>
           <AnchorPane prefHeight="480.0" prefWidth="720.0">
                <children>
@@ -125,10 +124,10 @@
                                           <Font size="15.0" />
                                        </font>
                                     </Label>
-                                    <CheckBox mnemonicParsing="false" GridPane.columnIndex="1" />
-                                    <CheckBox mnemonicParsing="false" GridPane.columnIndex="1" GridPane.rowIndex="1" />
-                                    <CheckBox mnemonicParsing="false" GridPane.columnIndex="1" GridPane.rowIndex="2" />
-                                    <CheckBox mnemonicParsing="false" GridPane.columnIndex="1" GridPane.rowIndex="3" />
+                                    <CheckBox fx:id="exactCheckBoxT2" mnemonicParsing="false" GridPane.columnIndex="1" />
+                                    <CheckBox fx:id="eulerCheckBoxT2" mnemonicParsing="false" GridPane.columnIndex="1" GridPane.rowIndex="1" />
+                                    <CheckBox fx:id="imprEulerCheckBoxT2" mnemonicParsing="false" GridPane.columnIndex="1" GridPane.rowIndex="2" />
+                                    <CheckBox fx:id="rKuttaCheckBoxT2" mnemonicParsing="false" GridPane.columnIndex="1" GridPane.rowIndex="3" />
                                  </children>
                                  <columnConstraints>
                                     <ColumnConstraints hgrow="SOMETIMES" maxWidth="153.34508514404297" minWidth="10.0" prefWidth="126.66592407226562" />
@@ -143,11 +142,12 @@
                               </GridPane>
                               <Label layoutX="10.0" layoutY="153.0" text="N0" />
                               <Label layoutX="96.0" layoutY="154.0" text="N1" />
-                              <TextField layoutX="35.0" layoutY="149.0" prefHeight="20.0" prefWidth="53.0" />
-                              <TextField layoutX="118.0" layoutY="149.0" prefHeight="20.0" prefWidth="53.0" />
+                              <TextField fx:id="N0Field" layoutX="35.0" layoutY="149.0" prefHeight="20.0" prefWidth="53.0" />
+                              <TextField fx:id="N1Field" layoutX="118.0" layoutY="149.0" prefHeight="20.0" prefWidth="53.0" />
+                              <Button fx:id="updateChart1" alignment="CENTER" layoutX="59.0" layoutY="192.0" mnemonicParsing="false" onAction="#update" text="Update" />
                            </children>
                         </AnchorPane>
-                        <LineChart layoutX="167.0" layoutY="1.0" prefHeight="478.0" prefWidth="366.0" title="Errors" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="167.0" AnchorPane.rightAnchor="15.0" AnchorPane.topAnchor="5.0">
+                        <LineChart fx:id="errorDepChart" layoutX="167.0" layoutY="1.0" prefHeight="478.0" prefWidth="366.0" title="Errors" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="167.0" AnchorPane.rightAnchor="15.0" AnchorPane.topAnchor="5.0">
                            <xAxis>
                               <NumberAxis label="x" side="BOTTOM" />
                            </xAxis>
