@@ -6,6 +6,8 @@ import javafx.scene.chart.XYChart.Series;
 
 public class RungeKuttaMethod extends ApproximationMethod {
 
+    RungeKuttaMethod() { super(); }
+
     RungeKuttaMethod(LineChart<Number, Number> funcChart,
                      LineChart<Number, Number> errChart) {
         super(funcChart, errChart);
@@ -26,17 +28,9 @@ public class RungeKuttaMethod extends ApproximationMethod {
             y[i + 1] = y[i] + h/6 * (k1 + 2 * k2 + 2 * k3 + k4);
         }
 
-//        methodSeries = new Series<>();
-//        methodSeries.setName("R-Kutta");
         methodSeries.getData().clear();
         for (int i = 0; i < N; i++)
             methodSeries.getData().add(new Data<>(x[i], y[i]));
     }
-
-//    @Override
-//    protected void calculateError(double[] exactY) {
-//        super.calculateError(exactY);
-////        errorSeries.setName("R-Kutta error");
-//    }
 
 }

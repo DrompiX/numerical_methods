@@ -9,21 +9,13 @@ public abstract class SeriesBuilder {
     double x[], y[];
     double x0, y0, X, h;
     int N;
-//    private boolean conditionsChanged = true;
+
+    SeriesBuilder() { methodSeries = new Series<>(); }
 
     SeriesBuilder(LineChart<Number, Number> chart) {
         this.chart = chart;
         methodSeries = new Series<>();
     }
-
-//    void setFields(double x0, double y0, double X, int N) {
-//        this.x0 = x0;
-//        this.y0 = y0;
-//        this.X = X;
-//        this.N = N;
-////        conditionsChanged = true;
-//        makeSeries();
-//    }
 
     void initialize() {
         h = (X - x0) / N;
@@ -41,10 +33,4 @@ public abstract class SeriesBuilder {
 
     protected abstract void makeSeries();
 
-//    void makeSeriesWithNewConditions() {
-//        if (conditionsChanged) {
-//            makeSeries();
-//            conditionsChanged = false;
-//        }
-//    }
 }

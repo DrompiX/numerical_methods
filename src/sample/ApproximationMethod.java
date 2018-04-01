@@ -9,6 +9,11 @@ public abstract class ApproximationMethod extends SeriesBuilder {
     private LineChart<Number, Number> errChart;
     private double maxError;
 
+    ApproximationMethod() {
+        super();
+        errorSeries = new Series<>();
+    }
+
     ApproximationMethod(LineChart<Number, Number> funcChart,
                         LineChart<Number, Number> errChart) {
         super(funcChart);
@@ -19,7 +24,6 @@ public abstract class ApproximationMethod extends SeriesBuilder {
     @Override
     void display() {
         hide();
-//        makeSeriesWithNewConditions();
         chart.getData().add(methodSeries);
         errChart.getData().add(errorSeries);
     }
@@ -29,30 +33,25 @@ public abstract class ApproximationMethod extends SeriesBuilder {
         chart.setAnimated(false);
         errChart.setAnimated(false);
         chart.getData().remove(methodSeries);
-//        hideError();
         errChart.getData().remove(errorSeries);
         errChart.setAnimated(true);
         chart.setAnimated(true);
+    }
+
+    void displayErrorDependency() {
+
+    }
+
+    void hideErrorDependency() {
+
     }
 
     double f(double x, double y) {
         return (Math.pow(y, 2) * Math.exp(x) + 2 * y); //y^2 * e^x + 2y
     }
 
-//    void displayError() {//double[] exactY) {
-////        calculateError(exactY);
-//        errChart.getData().add(errorSeries);
-//    }
-
-    private void hideError() {
-        errChart.setAnimated(false);
-        errChart.getData().remove(errorSeries);
-        errChart.setAnimated(true);
-    }
-
     protected void calculateError(double[] exactY) {
         maxError = 0;
-//        errorSeries = new Series<>();
         errorSeries.getData().clear();
 
         for (int i = 0; i < N; i++) {
@@ -62,8 +61,8 @@ public abstract class ApproximationMethod extends SeriesBuilder {
         }
     }
 
-    double getMaxError(int N, double[] exactY) {
-        setFields(x0, y0, X, N, exactY);
+    double getMaxError() {//int N) {//, double[] exactY) {
+//        setFields(x0, y0, X, N, exactY);
         return maxError;
     }
 
@@ -72,7 +71,6 @@ public abstract class ApproximationMethod extends SeriesBuilder {
         this.y0 = y0;
         this.X = X;
         this.N = N;
-//        conditionsChanged = true;
         makeSeries();
         calculateError(exactY);
     }

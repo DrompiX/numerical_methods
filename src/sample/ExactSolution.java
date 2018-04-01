@@ -2,10 +2,11 @@ package sample;
 
 import javafx.scene.chart.LineChart;
 import javafx.scene.chart.XYChart.Data;
-import javafx.scene.chart.XYChart.Series;
 
 public class ExactSolution extends SeriesBuilder {
     private double C;
+
+    ExactSolution() { super(); }
 
     ExactSolution(LineChart<Number, Number> chart) {
         super(chart);
@@ -22,8 +23,6 @@ public class ExactSolution extends SeriesBuilder {
 
     void display() {
         hide();
-//        calculateConstant();
-//        makeSeriesWithNewConditions();
         chart.getData().add(methodSeries);
     }
 
@@ -40,15 +39,12 @@ public class ExactSolution extends SeriesBuilder {
         for (int i = 0; i < N; i++)
             y[i] = y(x[i]);
 
-//        methodSeries = new Series<>();
-//        methodSeries.setName("Exact");
         methodSeries.getData().clear();
         for (int i = 0; i < N; i++)
             methodSeries.getData().add(new Data<>(x[i], y[i]));
     }
 
     double[] getY() {
-//        makeSeriesWithNewConditions();
         return y;
     }
 
@@ -57,7 +53,6 @@ public class ExactSolution extends SeriesBuilder {
         this.y0 = y0;
         this.X = X;
         this.N = N;
-//        conditionsChanged = true;
         calculateConstant();
         makeSeries();
     }

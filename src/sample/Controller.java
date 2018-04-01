@@ -8,6 +8,8 @@ import javafx.scene.chart.LineChart;
 import java.net.URL;
 import java.util.ResourceBundle;
 
+import javafx.scene.chart.XYChart.Data;
+import javafx.scene.chart.XYChart.Series;
 import javafx.scene.control.CheckBox;
 import javafx.scene.control.TextField;
 import javafx.util.Pair;
@@ -44,20 +46,23 @@ public class Controller implements Initializable {
     private ImprovedEulerMethod improvedEuler;
     private RungeKuttaMethod rungeKutta;
 
+    private Series<Number, Number> eulerDep = new Series<>();
+    private Series<Number, Number> imEulerDep = new Series<>();
+    private Series<Number, Number> rKuttaDep = new Series<>();
+
+    private double x0 = 1.7, y0 = -0.7, X = 9;
+    private int N = 25;
+
     //TODO: to correct y(1.7)
     // Variant 23 - y^2*e^x - 2y, y(1.7) = -0.9025147, x in [1.7, 9]
 
     @Override
     public void initialize(URL url, ResourceBundle rb) {
-
-        // Initial values:
-        double x0 = 1.7, y0 = -0.7, X = 9;
-        int N = 25;
-
+        exactSolution = new ExactSolution(functionChart);
         euler = new EulerMethod(functionChart, errorChart);
         improvedEuler = new ImprovedEulerMethod(functionChart, errorChart);
         rungeKutta = new RungeKuttaMethod(functionChart, errorChart);
-        exactSolution = new ExactSolution(functionChart);
+
         updateValues(x0, y0, X, N);
         NField.setText("25");
         x0field.setText("1.7");
@@ -66,6 +71,10 @@ public class Controller implements Initializable {
         N0Field.setText("25");
         N1Field.setText("100");
         buildExact();
+
+        eulerDep.setName("Euler error");
+        imEulerDep.setName("Im.Euler error");
+        rKuttaDep.setName("R-Kutta error");
     }
 
     @FXML
@@ -76,49 +85,66 @@ public class Controller implements Initializable {
 
     @FXML
     private void approxWithEuler() {
-        if (eulerCheckBox.isSelected()) {
-            euler.display();
-//            euler.displayError();
-        } else
-            euler.hide();
+        if (eulerCheckBox.isSelected()) euler.display();
+        else euler.hide();
     }
 
     @FXML
     private void approxWithImprovedEuler() {
-        if (imprEulerCheckBox.isSelected()) {
-            improvedEuler.display();
-//            improvedEuler.displayError();
-        } else
-            improvedEuler.hide();
+        if (imprEulerCheckBox.isSelected()) improvedEuler.display();
+        else improvedEuler.hide();
     }
 
     @FXML
     private void approxWithRungeKutta() {
-        if (rKuttaCheckBox.isSelected()) {
-            rungeKutta.display();
-//            rungeKutta.displayError();
-        } else
-            rungeKutta.hide();
+        if (rKuttaCheckBox.isSelected()) rungeKutta.display();
+        else rungeKutta.hide();
     }
 
     @FXML
     private void buildEulerError() {
-        Pair<Integer, Integer> range = getRange();
-        if (range != null) {
-            for (int i = range.getKey(); i <= range.getValue(); i++) {
-
-            }
-        }
+        if (eulerErrorCheckBox.isSelected())
+            displayErrorDep(new EulerMethod(), eulerDep);
+        else
+            hideErrorDep(eulerDep);
     }
 
     @FXML
     private void buildImpEulerError() {
-
+        if (imprEulerErrorCheckBox.isSelected())
+            displayErrorDep(new ImprovedEulerMethod(), imEulerDep);
+        else
+            hideErrorDep(imEulerDep);
     }
 
     @FXML
     private void buildRKuttaError() {
+        if (rKuttaErrorCheckBox.isSelected())
+            displayErrorDep(new RungeKuttaMethod(), rKuttaDep);
+        else
+            hideErrorDep(rKuttaDep);
+    }
 
+    private void displayErrorDep(ApproximationMethod am, Series<Number, Number> errorDep) {
+        ExactSolution exact = new ExactSolution(functionChart);
+        Pair<Integer, Integer> range = getRange();
+
+        if (range != null) {
+            errorDep.getData().clear();
+            for (int i = range.getKey(); i <= range.getValue(); i++) {
+                exact.setFields(x0, y0, X, i);
+                am.setFields(x0, y0, X, i, exact.getY());
+                double iError = am.getMaxError();
+                errorDep.getData().add(new Data<>(i, iError));
+            }
+            errorDepChart.getData().add(errorDep);
+        }
+    }
+
+    private void hideErrorDep(Series<Number, Number> errorDep) {
+        errorDepChart.setAnimated(false);
+        errorDepChart.getData().remove(errorDep);
+        errorDepChart.setAnimated(true);
     }
 
     private Pair<Integer, Integer> getRange() {
@@ -156,9 +182,25 @@ public class Controller implements Initializable {
         approxWithRungeKutta();
     }
 
+    @FXML
+    private void updateError() {
+        hideErrorDep(eulerDep);
+        hideErrorDep(imEulerDep);
+        hideErrorDep(rKuttaDep);
+        displayErrorDep(new EulerMethod(), eulerDep);
+        displayErrorDep(new ImprovedEulerMethod(), imEulerDep);
+        displayErrorDep(new RungeKuttaMethod(), rKuttaDep);
+    }
+
     private void updateValues(double x0, double y0, double X, int N) {
+        this.x0 = x0;
+        this.y0 = y0;
+        this.X = X;
+        this.N = N;
+
         exactSolution.setFields(x0, y0, X, N);
         double[] exact = exactSolution.getY();
+
         euler.setFields(x0, y0, X, N, exact);
         improvedEuler.setFields(x0, y0, X, N, exact);
         rungeKutta.setFields(x0, y0, X, N, exact);

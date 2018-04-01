@@ -138,15 +138,15 @@
                               <Label layoutX="96.0" layoutY="126.0" text="N1" />
                               <TextField fx:id="N0Field" layoutX="35.0" layoutY="121.0" prefHeight="20.0" prefWidth="53.0" />
                               <TextField fx:id="N1Field" layoutX="118.0" layoutY="121.0" prefHeight="20.0" prefWidth="53.0" />
-                              <Button fx:id="updateChart1" alignment="CENTER" layoutX="59.0" layoutY="164.0" mnemonicParsing="false" onAction="#update" text="Update" />
+                              <Button fx:id="updateChart1" alignment="CENTER" layoutX="59.0" layoutY="164.0" mnemonicParsing="false" onAction="#updateError" text="Update" />
                            </children>
                         </AnchorPane>
                         <LineChart fx:id="errorDepChart" layoutX="167.0" layoutY="1.0" prefHeight="478.0" prefWidth="366.0" title="Errors" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="167.0" AnchorPane.rightAnchor="15.0" AnchorPane.topAnchor="5.0">
                            <xAxis>
-                              <NumberAxis label="x" side="BOTTOM" />
+                              <NumberAxis forceZeroInRange="false" label="N" side="BOTTOM" />
                            </xAxis>
                            <yAxis>
-                              <NumberAxis label="y" side="LEFT" />
+                              <NumberAxis forceZeroInRange="false" label="y" side="LEFT" />
                            </yAxis>
                         </LineChart>
                      </items>
