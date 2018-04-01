@@ -84,7 +84,7 @@
                                     <NumberAxis label="x" side="BOTTOM" />
                                  </xAxis>
                                  <yAxis>
-                                    <NumberAxis label="y" side="LEFT" />
+                                    <NumberAxis label="error" side="LEFT" />
                                  </yAxis>
                               </LineChart>
                            </items>
@@ -146,7 +146,7 @@
                               <NumberAxis forceZeroInRange="false" label="N" side="BOTTOM" />
                            </xAxis>
                            <yAxis>
-                              <NumberAxis forceZeroInRange="false" label="y" side="LEFT" />
+                              <NumberAxis forceZeroInRange="false" label="error" side="LEFT" />
                            </yAxis>
                         </LineChart>
                      </items>
