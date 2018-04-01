@@ -10,6 +10,7 @@ import java.util.ResourceBundle;
 
 import javafx.scene.control.CheckBox;
 import javafx.scene.control.TextField;
+import javafx.util.Pair;
 
 public class Controller implements Initializable {
 
@@ -30,10 +31,9 @@ public class Controller implements Initializable {
     @FXML private TextField Xfield;
 
     // Tab 2 checkboxes
-    @FXML private CheckBox exactCheckBoxT2;
-    @FXML private CheckBox eulerCheckBoxT2;
-    @FXML private CheckBox imprEulerCheckBoxT2;
-    @FXML private CheckBox rKuttaCheckBoxT2;
+    @FXML private CheckBox eulerErrorCheckBox;
+    @FXML private CheckBox imprEulerErrorCheckBox;
+    @FXML private CheckBox rKuttaErrorCheckBox;
 
     // Tab 2 text fields
     @FXML private TextField N0Field;
@@ -49,6 +49,7 @@ public class Controller implements Initializable {
 
     @Override
     public void initialize(URL url, ResourceBundle rb) {
+
         // Initial values:
         double x0 = 1.7, y0 = -0.7, X = 9;
         int N = 25;
@@ -62,6 +63,8 @@ public class Controller implements Initializable {
         x0field.setText("1.7");
         y0field.setText("-0.7");
         Xfield.setText("9");
+        N0Field.setText("25");
+        N1Field.setText("100");
         buildExact();
     }
 
@@ -75,7 +78,7 @@ public class Controller implements Initializable {
     private void approxWithEuler() {
         if (eulerCheckBox.isSelected()) {
             euler.display();
-            euler.displayError(exactSolution.getY());
+//            euler.displayError();
         } else
             euler.hide();
     }
@@ -84,7 +87,7 @@ public class Controller implements Initializable {
     private void approxWithImprovedEuler() {
         if (imprEulerCheckBox.isSelected()) {
             improvedEuler.display();
-            improvedEuler.displayError(exactSolution.getY());
+//            improvedEuler.displayError();
         } else
             improvedEuler.hide();
     }
@@ -93,9 +96,41 @@ public class Controller implements Initializable {
     private void approxWithRungeKutta() {
         if (rKuttaCheckBox.isSelected()) {
             rungeKutta.display();
-            rungeKutta.displayError(exactSolution.getY());
+//            rungeKutta.displayError();
         } else
             rungeKutta.hide();
+    }
+
+    @FXML
+    private void buildEulerError() {
+        Pair<Integer, Integer> range = getRange();
+        if (range != null) {
+            for (int i = range.getKey(); i <= range.getValue(); i++) {
+
+            }
+        }
+    }
+
+    @FXML
+    private void buildImpEulerError() {
+
+    }
+
+    @FXML
+    private void buildRKuttaError() {
+
+    }
+
+    private Pair<Integer, Integer> getRange() {
+        int N0, N1;
+        try {
+            N0 = Integer.valueOf(N0Field.getText());
+            N1 = Integer.valueOf(N1Field.getText());
+            return new Pair<>(N0, N1);
+        } catch (Exception e) {
+            System.out.println(e.getMessage());
+        }
+        return null;
     }
 
     @FXML
@@ -123,9 +158,10 @@ public class Controller implements Initializable {
 
     private void updateValues(double x0, double y0, double X, int N) {
         exactSolution.setFields(x0, y0, X, N);
-        euler.setFields(x0, y0, X, N);
-        improvedEuler.setFields(x0, y0, X, N);
-        rungeKutta.setFields(x0, y0, X, N);
+        double[] exact = exactSolution.getY();
+        euler.setFields(x0, y0, X, N, exact);
+        improvedEuler.setFields(x0, y0, X, N, exact);
+        rungeKutta.setFields(x0, y0, X, N, exact);
     }
 
 }

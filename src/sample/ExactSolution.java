@@ -9,6 +9,7 @@ public class ExactSolution extends SeriesBuilder {
 
     ExactSolution(LineChart<Number, Number> chart) {
         super(chart);
+        methodSeries.setName("Exact");
     }
 
     double y(double x) {
@@ -21,8 +22,8 @@ public class ExactSolution extends SeriesBuilder {
 
     void display() {
         hide();
-        calculateConstant();
-        makeSeriesWithNewConditions();
+//        calculateConstant();
+//        makeSeriesWithNewConditions();
         chart.getData().add(methodSeries);
     }
 
@@ -39,15 +40,26 @@ public class ExactSolution extends SeriesBuilder {
         for (int i = 0; i < N; i++)
             y[i] = y(x[i]);
 
-        methodSeries = new Series<>();
-        methodSeries.setName("Exact");
+//        methodSeries = new Series<>();
+//        methodSeries.setName("Exact");
+        methodSeries.getData().clear();
         for (int i = 0; i < N; i++)
             methodSeries.getData().add(new Data<>(x[i], y[i]));
     }
 
     double[] getY() {
-        makeSeriesWithNewConditions();
+//        makeSeriesWithNewConditions();
         return y;
+    }
+
+    void setFields(double x0, double y0, double X, int N) {
+        this.x0 = x0;
+        this.y0 = y0;
+        this.X = X;
+        this.N = N;
+//        conditionsChanged = true;
+        calculateConstant();
+        makeSeries();
     }
 
 }
