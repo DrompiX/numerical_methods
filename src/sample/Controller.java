@@ -10,6 +10,7 @@ import java.util.ResourceBundle;
 
 import javafx.scene.chart.XYChart.Data;
 import javafx.scene.chart.XYChart.Series;
+import javafx.scene.control.Alert;
 import javafx.scene.control.CheckBox;
 import javafx.scene.control.TextField;
 import javafx.util.Pair;
@@ -53,8 +54,7 @@ public class Controller implements Initializable {
     private double x0 = 1.7, y0 = -0.7, X = 9;
     private int N = 25;
 
-    //TODO: to correct y(1.7)
-    // Variant 23 - y^2*e^x - 2y, y(1.7) = -0.9025147, x in [1.7, 9]
+    // Variant 23 - y^2*e^x - 2y, x in [1.7, 9]
 
     @Override
     public void initialize(URL url, ResourceBundle rb) {
@@ -64,10 +64,11 @@ public class Controller implements Initializable {
         rungeKutta = new RungeKuttaMethod(functionChart, errorChart);
 
         updateValues(x0, y0, X, N);
-        NField.setText("25");
-        x0field.setText("1.7");
-        y0field.setText("-0.7");
-        Xfield.setText("9");
+//        NField.setText("25");
+//        x0field.setText("1.7");
+//        y0field.setText("-0.7");
+//        Xfield.setText("9");
+        setFirstTabValues(1.7, -0.7, 9, 25);
         N0Field.setText("25");
         N1Field.setText("100");
         buildExact();
@@ -126,9 +127,10 @@ public class Controller implements Initializable {
     }
 
     private void displayErrorDep(ApproximationMethod am, Series<Number, Number> errorDep) {
-        ExactSolution exact = new ExactSolution(functionChart);
+        ExactSolution exact = new ExactSolution();
         Pair<Integer, Integer> range = getRange();
 
+        hideErrorDep(errorDep);
         if (range != null) {
             errorDep.getData().clear();
             for (int i = range.getKey(); i <= range.getValue(); i++) {
@@ -152,11 +154,12 @@ public class Controller implements Initializable {
         try {
             N0 = Integer.valueOf(N0Field.getText());
             N1 = Integer.valueOf(N1Field.getText());
+            if (N0 > N1) throw new IllegalArgumentException("N0 > N1");
             return new Pair<>(N0, N1);
         } catch (Exception e) {
             System.out.println(e.getMessage());
+            return null;
         }
-        return null;
     }
 
     @FXML
@@ -166,12 +169,21 @@ public class Controller implements Initializable {
             double x0 = Double.valueOf(x0field.getText());
             double y0 = Double.valueOf(y0field.getText());
             double X = Double.valueOf(Xfield.getText());
-            // TODO: to manage incorrect N's - 1) X > x0; 2) x0 < 1.5
-//            if ((X - x0) / N > 0.6 || X < x0 || x0 < 1.5)
-//                throw new InvalidActivityException("Invalid range");
-//            else
+
+
+            // Check validity
+            if (X < x0 || x0 < 1.5 || y0 >= 0) {
+                showError("Invalid range [x0, X] or y0 >= 0");
+                throw new IllegalArgumentException("Invalid range [x0, X] or y0 >= 0");
+            }
+            // TODO: to manage incorrect N's
+            if ((X - x0) / N > 0.53) {
+                showError("Invalid range, some chart may go to infinity");
+                throw new IllegalArgumentException("Invalid range, chart goes to infinity");
+            }
             updateValues(x0, y0, X, N);
         } catch (Exception e) {
+            setFirstTabValues(x0, y0, X, N);
             System.out.println(e.getMessage());
             return;
         }
@@ -182,14 +194,19 @@ public class Controller implements Initializable {
         approxWithRungeKutta();
     }
 
+    private void showError(String text) {
+        Alert alert = new Alert(Alert.AlertType.ERROR);
+        alert.setTitle("Error here");
+        alert.setHeaderText(null);
+        alert.setContentText(text);
+        alert.showAndWait();
+    }
+
     @FXML
     private void updateError() {
-        hideErrorDep(eulerDep);
-        hideErrorDep(imEulerDep);
-        hideErrorDep(rKuttaDep);
-        displayErrorDep(new EulerMethod(), eulerDep);
-        displayErrorDep(new ImprovedEulerMethod(), imEulerDep);
-        displayErrorDep(new RungeKuttaMethod(), rKuttaDep);
+        buildEulerError();
+        buildImpEulerError();
+        buildRKuttaError();
     }
 
     private void updateValues(double x0, double y0, double X, int N) {
@@ -204,6 +221,17 @@ public class Controller implements Initializable {
         euler.setFields(x0, y0, X, N, exact);
         improvedEuler.setFields(x0, y0, X, N, exact);
         rungeKutta.setFields(x0, y0, X, N, exact);
+    }
+
+    private void setFirstTabValues(double x0, double y0, double X, int N) {
+        x0field.setText(Double.toString(x0));
+        y0field.setText(Double.toString(y0));
+        Xfield.setText(Double.toString(X));
+        NField.setText(Integer.toString(N));
+    }
+
+    private void setSecondTabValues(int n0, int n1) {
+
     }
 
 }
