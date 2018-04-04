@@ -38,19 +38,11 @@ public abstract class ApproximationMethod extends SeriesBuilder {
         chart.setAnimated(true);
     }
 
-    void displayErrorDependency() {
-
-    }
-
-    void hideErrorDependency() {
-
-    }
-
     double f(double x, double y) {
-        return (Math.pow(y, 2) * Math.exp(x) + 2 * y); //y^2 * e^x + 2y
+        return (Math.pow(y, 2) * Math.exp(x) + 2 * y);
     }
 
-    protected void calculateError(double[] exactY) {
+    private void calculateError(double[] exactY) {
         maxError = 0;
         errorSeries.getData().clear();
 
@@ -61,8 +53,7 @@ public abstract class ApproximationMethod extends SeriesBuilder {
         }
     }
 
-    double getMaxError() {//int N) {//, double[] exactY) {
-//        setFields(x0, y0, X, N, exactY);
+    double getMaxError() {
         return maxError;
     }
 

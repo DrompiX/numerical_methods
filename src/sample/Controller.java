@@ -194,19 +194,19 @@ public class Controller implements Initializable {
         approxWithRungeKutta();
     }
 
+    @FXML
+    private void updateError() {
+        buildEulerError();
+        buildImpEulerError();
+        buildRKuttaError();
+    }
+
     private void showError(String text) {
         Alert alert = new Alert(Alert.AlertType.ERROR);
         alert.setTitle("Error here");
         alert.setHeaderText(null);
         alert.setContentText(text);
         alert.showAndWait();
-    }
-
-    @FXML
-    private void updateError() {
-        buildEulerError();
-        buildImpEulerError();
-        buildRKuttaError();
     }
 
     private void updateValues(double x0, double y0, double X, int N) {
