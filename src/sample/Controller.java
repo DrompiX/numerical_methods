@@ -64,13 +64,8 @@ public class Controller implements Initializable {
         rungeKutta = new RungeKuttaMethod(functionChart, errorChart);
 
         updateValues(x0, y0, X, N);
-//        NField.setText("25");
-//        x0field.setText("1.7");
-//        y0field.setText("-0.7");
-//        Xfield.setText("9");
         setFirstTabValues(1.7, -0.7, 9, 25);
-        N0Field.setText("25");
-        N1Field.setText("100");
+        setSecondTabValues(25, 100);
         buildExact();
 
         eulerDep.setName("Euler error");
@@ -78,6 +73,9 @@ public class Controller implements Initializable {
         rKuttaDep.setName("R-Kutta error");
     }
 
+    /***
+     * This method builds a chart of the exact solution
+     */
     @FXML
     private void buildExact() {
         if (exactCheckBox.isSelected()) exactSolution.display();
@@ -164,27 +162,32 @@ public class Controller implements Initializable {
 
     @FXML
     private void update() {
+        boolean errorOccurred = false;
+        // TODO: full check for bottom values
         try {
             int N = Integer.valueOf(NField.getText());
             double x0 = Double.valueOf(x0field.getText());
             double y0 = Double.valueOf(y0field.getText());
             double X = Double.valueOf(Xfield.getText());
 
-
             // Check validity
             if (X < x0 || x0 < 1.5 || y0 >= 0) {
-                showError("Invalid range [x0, X] or y0 >= 0");
+                showError("Invalid range [x0, X] or y0 >= 0!");
+                errorOccurred = true;
                 throw new IllegalArgumentException("Invalid range [x0, X] or y0 >= 0");
             }
             // TODO: to manage incorrect N's
             if ((X - x0) / N > 0.53) {
-                showError("Invalid range, some chart may go to infinity");
+                showError("Invalid range, some chart may go to infinity!");
+                errorOccurred = true;
                 throw new IllegalArgumentException("Invalid range, chart goes to infinity");
             }
             updateValues(x0, y0, X, N);
         } catch (Exception e) {
             setFirstTabValues(x0, y0, X, N);
+            if (errorOccurred) return;
             System.out.println(e.getMessage());
+            showError("Incorrect type of input data!");
             return;
         }
 
@@ -203,7 +206,7 @@ public class Controller implements Initializable {
 
     private void showError(String text) {
         Alert alert = new Alert(Alert.AlertType.ERROR);
-        alert.setTitle("Error here");
+        alert.setTitle("Error occurred");
         alert.setHeaderText(null);
         alert.setContentText(text);
         alert.showAndWait();
@@ -223,6 +226,7 @@ public class Controller implements Initializable {
         rungeKutta.setFields(x0, y0, X, N, exact);
     }
 
+    // TODO: wrap in try
     private void setFirstTabValues(double x0, double y0, double X, int N) {
         x0field.setText(Double.toString(x0));
         y0field.setText(Double.toString(y0));
@@ -231,7 +235,8 @@ public class Controller implements Initializable {
     }
 
     private void setSecondTabValues(int n0, int n1) {
-
+        N0Field.setText(Integer.toString(n0));
+        N1Field.setText(Integer.toString(n1));
     }
 
 }
