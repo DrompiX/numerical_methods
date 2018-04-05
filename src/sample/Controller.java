@@ -51,8 +51,9 @@ public class Controller implements Initializable {
     private Series<Number, Number> imEulerDep = new Series<>();
     private Series<Number, Number> rKuttaDep = new Series<>();
 
+    private final double maxH = 0.49;
     private double x0 = 1.7, y0 = -0.7, X = 9;
-    private int N = 25;
+    private int N = 25, N0 = 25, N1 = 100;
 
     // Variant 23 - y^2*e^x - 2y, x in [1.7, 9]
 
@@ -128,8 +129,8 @@ public class Controller implements Initializable {
         ExactSolution exact = new ExactSolution();
         Pair<Integer, Integer> range = getRange();
 
-        hideErrorDep(errorDep);
         if (range != null) {
+            hideErrorDep(errorDep);
             errorDep.getData().clear();
             for (int i = range.getKey(); i <= range.getValue(); i++) {
                 exact.setFields(x0, y0, X, i);
@@ -153,11 +154,22 @@ public class Controller implements Initializable {
             N0 = Integer.valueOf(N0Field.getText());
             N1 = Integer.valueOf(N1Field.getText());
             if (N0 > N1) throw new IllegalArgumentException("N0 > N1");
+            if (getMinimalN() > N0) throw new IllegalArgumentException("N0 is invalid");
+            this.N0 = N0; this.N1 = N1;
             return new Pair<>(N0, N1);
         } catch (Exception e) {
+            showError(e.getMessage());
+            setSecondTabValues(this.N0, this.N1);
             System.out.println(e.getMessage());
             return null;
         }
+    }
+
+    private int getMinimalN() {
+        for (int i = 2; i < this.N; i++) {
+            if ((X - x0) / (i - 1) <= maxH) return i;
+        }
+        return this.N;
     }
 
     @FXML
@@ -177,7 +189,7 @@ public class Controller implements Initializable {
                 throw new IllegalArgumentException("Invalid range [x0, X] or y0 >= 0");
             }
             // TODO: to manage incorrect N's
-            if ((X - x0) / N > 0.53) {
+            if ((X - x0) / N > maxH) {
                 showError("Invalid range, some chart may go to infinity!");
                 errorOccurred = true;
                 throw new IllegalArgumentException("Invalid range, chart goes to infinity");

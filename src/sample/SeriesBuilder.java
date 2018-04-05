@@ -18,7 +18,7 @@ public abstract class SeriesBuilder {
     }
 
     void initialize() {
-        h = (X - x0) / N;
+        h = (X - x0) / (N - 1);
         x = new double[N];
         x[0] = x0;
         for (int i = 1; i < N; i++)
