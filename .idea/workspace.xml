@@ -2,11 +2,10 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="cdb932d9-7e58-4d94-93a9-e7b232ef17da" name="Default" comment="">
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/Assignment/sample/sample.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/Assignment/sample/sample.fxml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/sample/ApproximationMethod.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/sample/ApproximationMethod.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/sample/Controller.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/sample/Controller.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/sample/sample.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/src/sample/sample.fxml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/sample/SeriesBuilder.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/sample/SeriesBuilder.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/sample/SeriesModel.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/sample/SeriesModel.java" afterDir="false" />
     </list>
     <ignored path="JavaFxApplication.iws" />
     <ignored path=".idea/workspace.xml" />
@@ -67,8 +66,8 @@
       <file leaf-file-name="Controller.java" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/sample/Controller.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="302">
-              <caret line="122" column="38" selection-start-line="122" selection-start-column="38" selection-end-line="122" selection-end-column="38" />
+            <state relative-caret-position="489">
+              <caret line="55" column="21" lean-forward="true" selection-start-line="55" selection-start-column="21" selection-end-line="55" selection-end-column="21" />
               <folding>
                 <element signature="imports" expanded="true" />
                 <element signature="e#1986#1987#0" expanded="true" />
@@ -82,13 +81,35 @@
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="SeriesModel.java" pinned="false" current-in-tab="true">
+      <file leaf-file-name="SeriesModel.java" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/sample/SeriesModel.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="-639">
-              <caret line="25" column="4" selection-start-line="25" selection-start-column="4" selection-end-line="25" selection-end-column="4" />
+            <state>
+              <caret column="15" lean-forward="true" selection-start-column="15" selection-end-column="15" />
               <folding>
                 <element signature="imports" expanded="true" />
+                <element signature="e#4691#4692#0" expanded="true" />
+                <element signature="e#4716#4717#0" expanded="true" />
+                <element signature="e#4742#4743#0" expanded="true" />
+                <element signature="e#4765#4766#0" expanded="true" />
+                <element signature="e#4784#4785#0" expanded="true" />
+                <element signature="e#4809#4810#0" expanded="true" />
+                <element signature="e#4835#4836#0" expanded="true" />
+                <element signature="e#4858#4859#0" expanded="true" />
+                <element signature="e#4880#4881#0" expanded="true" />
+                <element signature="e#4905#4906#0" expanded="true" />
+                <element signature="e#4927#4928#0" expanded="true" />
+                <element signature="e#4952#4953#0" expanded="true" />
+                <element signature="e#4973#4974#0" expanded="true" />
+                <element signature="e#4997#4998#0" expanded="true" />
+                <element signature="e#5015#5016#0" expanded="true" />
+                <element signature="e#5039#5040#0" expanded="true" />
+                <element signature="e#5069#5070#0" expanded="true" />
+                <element signature="e#5097#5098#0" expanded="true" />
+                <element signature="e#5143#5144#0" expanded="true" />
+                <element signature="e#5179#5180#0" expanded="true" />
+                <element signature="e#5219#5220#0" expanded="true" />
+                <element signature="e#5252#5253#0" expanded="true" />
               </folding>
             </state>
           </provider>
@@ -97,12 +118,16 @@
       <file leaf-file-name="ApproximationMethod.java" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/sample/ApproximationMethod.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="114">
-              <caret line="6" selection-start-line="6" selection-end-line="6" selection-end-column="7" />
+            <state relative-caret-position="1423">
+              <caret line="90" column="7" lean-forward="true" selection-start-line="90" selection-start-column="7" selection-end-line="90" selection-end-column="7" />
               <folding>
                 <element signature="imports" expanded="true" />
-                <element signature="e#1891#1892#0" expanded="true" />
-                <element signature="e#1922#1923#0" expanded="true" />
+                <element signature="e#1329#1330#0" expanded="true" />
+                <element signature="e#1390#1391#0" expanded="true" />
+                <element signature="e#1900#1901#0" expanded="true" />
+                <element signature="e#1931#1932#0" expanded="true" />
+                <element signature="e#2282#2283#0" expanded="true" />
+                <element signature="e#2313#2314#0" expanded="true" />
               </folding>
             </state>
           </provider>
@@ -117,11 +142,11 @@
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="SeriesBuilder.java" pinned="false" current-in-tab="false">
+      <file leaf-file-name="SeriesBuilder.java" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/src/sample/SeriesBuilder.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="609">
-              <caret line="33" column="30" selection-start-line="33" selection-start-column="30" selection-end-line="33" selection-end-column="30" />
+            <state relative-caret-position="665">
+              <caret line="35" column="73" selection-start-line="35" selection-start-column="73" selection-end-line="35" selection-end-column="73" />
               <folding>
                 <element signature="imports" expanded="true" />
               </folding>
@@ -132,8 +157,8 @@
       <file leaf-file-name="ExactSolution.java" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/sample/ExactSolution.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="398">
-              <caret line="25" column="42" lean-forward="true" selection-start-line="25" selection-start-column="42" selection-end-line="25" selection-end-column="42" />
+            <state relative-caret-position="79">
+              <caret line="7" lean-forward="true" selection-start-line="7" selection-end-line="7" />
               <folding>
                 <element signature="imports" expanded="true" />
               </folding>
@@ -193,14 +218,14 @@
         <option value="$PROJECT_DIR$/src/sample/ErrorTabController.java" />
         <option value="$PROJECT_DIR$/src/sample/error.fxml" />
         <option value="$PROJECT_DIR$/src/sample/sample.fxml" />
-        <option value="$PROJECT_DIR$/src/sample/SeriesBuilder.java" />
         <option value="$PROJECT_DIR$/src/sample/EulerMethod.java" />
         <option value="$PROJECT_DIR$/src/sample/RungeKuttaMethod.java" />
         <option value="$PROJECT_DIR$/src/sample/ImprovedEulerMethod.java" />
         <option value="$PROJECT_DIR$/src/sample/ExactSolution.java" />
-        <option value="$PROJECT_DIR$/src/sample/ApproximationMethod.java" />
         <option value="$PROJECT_DIR$/src/sample/Controller.java" />
         <option value="$PROJECT_DIR$/src/sample/SeriesModel.java" />
+        <option value="$PROJECT_DIR$/src/sample/ApproximationMethod.java" />
+        <option value="$PROJECT_DIR$/src/sample/SeriesBuilder.java" />
       </list>
     </option>
   </component>
@@ -397,7 +422,7 @@
       <window_info anchor="right" id="Capture Analysis" order="7" />
       <window_info anchor="bottom" id="Event Log" order="7" side_tool="true" />
       <window_info anchor="right" id="Maven Projects" order="4" />
-      <window_info active="true" anchor="bottom" id="Run" order="2" visible="true" weight="0.2569697" />
+      <window_info anchor="bottom" id="Run" order="2" weight="0.2569697" />
       <window_info anchor="bottom" id="Version Control" order="11" />
       <window_info anchor="bottom" id="Terminal" order="13" />
       <window_info id="Capture Tool" order="2" />
@@ -457,8 +482,12 @@
           <caret line="39" selection-start-line="39" selection-end-line="39" />
           <folding>
             <element signature="imports" expanded="true" />
-            <element signature="e#1891#1892#0" expanded="true" />
-            <element signature="e#1922#1923#0" expanded="true" />
+            <element signature="e#1329#1330#0" expanded="true" />
+            <element signature="e#1390#1391#0" expanded="true" />
+            <element signature="e#1900#1901#0" expanded="true" />
+            <element signature="e#1931#1932#0" expanded="true" />
+            <element signature="e#2282#2283#0" expanded="true" />
+            <element signature="e#2313#2314#0" expanded="true" />
           </folding>
         </state>
       </provider>
@@ -512,8 +541,12 @@
           <caret line="39" selection-start-line="39" selection-end-line="39" />
           <folding>
             <element signature="imports" expanded="true" />
-            <element signature="e#1891#1892#0" expanded="true" />
-            <element signature="e#1922#1923#0" expanded="true" />
+            <element signature="e#1329#1330#0" expanded="true" />
+            <element signature="e#1390#1391#0" expanded="true" />
+            <element signature="e#1900#1901#0" expanded="true" />
+            <element signature="e#1931#1932#0" expanded="true" />
+            <element signature="e#2282#2283#0" expanded="true" />
+            <element signature="e#2313#2314#0" expanded="true" />
           </folding>
         </state>
       </provider>
@@ -584,8 +617,12 @@
           <caret line="40" column="30" lean-forward="true" selection-start-line="40" selection-start-column="30" selection-end-line="40" selection-end-column="30" />
           <folding>
             <element signature="imports" expanded="true" />
-            <element signature="e#1891#1892#0" expanded="true" />
-            <element signature="e#1922#1923#0" expanded="true" />
+            <element signature="e#1329#1330#0" expanded="true" />
+            <element signature="e#1390#1391#0" expanded="true" />
+            <element signature="e#1900#1901#0" expanded="true" />
+            <element signature="e#1931#1932#0" expanded="true" />
+            <element signature="e#2282#2283#0" expanded="true" />
+            <element signature="e#2313#2314#0" expanded="true" />
           </folding>
         </state>
       </provider>
@@ -644,8 +681,12 @@
           <caret line="10" column="5" lean-forward="true" selection-start-line="10" selection-start-column="5" selection-end-line="10" selection-end-column="5" />
           <folding>
             <element signature="imports" expanded="true" />
-            <element signature="e#1891#1892#0" expanded="true" />
-            <element signature="e#1922#1923#0" expanded="true" />
+            <element signature="e#1329#1330#0" expanded="true" />
+            <element signature="e#1390#1391#0" expanded="true" />
+            <element signature="e#1900#1901#0" expanded="true" />
+            <element signature="e#1931#1932#0" expanded="true" />
+            <element signature="e#2282#2283#0" expanded="true" />
+            <element signature="e#2313#2314#0" expanded="true" />
           </folding>
         </state>
       </provider>
@@ -862,16 +903,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/sample/SeriesBuilder.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="609">
-          <caret line="33" column="30" selection-start-line="33" selection-start-column="30" selection-end-line="33" selection-end-column="30" />
-          <folding>
-            <element signature="imports" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/sample/ImprovedEulerMethod.java">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="551">
@@ -886,32 +917,10 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/sample/ExactSolution.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="398">
-          <caret line="25" column="42" lean-forward="true" selection-start-line="25" selection-start-column="42" selection-end-line="25" selection-end-column="42" />
-          <folding>
-            <element signature="imports" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/sample/ApproximationMethod.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="114">
-          <caret line="6" selection-start-line="6" selection-end-line="6" selection-end-column="7" />
-          <folding>
-            <element signature="imports" expanded="true" />
-            <element signature="e#1891#1892#0" expanded="true" />
-            <element signature="e#1922#1923#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/sample/Controller.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="302">
-          <caret line="122" column="38" selection-start-line="122" selection-start-column="38" selection-end-line="122" selection-end-column="38" />
+        <state relative-caret-position="489">
+          <caret line="55" column="21" lean-forward="true" selection-start-line="55" selection-start-column="21" selection-end-line="55" selection-end-column="21" />
           <folding>
             <element signature="imports" expanded="true" />
             <element signature="e#1986#1987#0" expanded="true" />
@@ -926,8 +935,66 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/src/sample/SeriesModel.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-639">
-          <caret line="25" column="4" selection-start-line="25" selection-start-column="4" selection-end-line="25" selection-end-column="4" />
+        <state>
+          <caret column="15" lean-forward="true" selection-start-column="15" selection-end-column="15" />
+          <folding>
+            <element signature="imports" expanded="true" />
+            <element signature="e#4691#4692#0" expanded="true" />
+            <element signature="e#4716#4717#0" expanded="true" />
+            <element signature="e#4742#4743#0" expanded="true" />
+            <element signature="e#4765#4766#0" expanded="true" />
+            <element signature="e#4784#4785#0" expanded="true" />
+            <element signature="e#4809#4810#0" expanded="true" />
+            <element signature="e#4835#4836#0" expanded="true" />
+            <element signature="e#4858#4859#0" expanded="true" />
+            <element signature="e#4880#4881#0" expanded="true" />
+            <element signature="e#4905#4906#0" expanded="true" />
+            <element signature="e#4927#4928#0" expanded="true" />
+            <element signature="e#4952#4953#0" expanded="true" />
+            <element signature="e#4973#4974#0" expanded="true" />
+            <element signature="e#4997#4998#0" expanded="true" />
+            <element signature="e#5015#5016#0" expanded="true" />
+            <element signature="e#5039#5040#0" expanded="true" />
+            <element signature="e#5069#5070#0" expanded="true" />
+            <element signature="e#5097#5098#0" expanded="true" />
+            <element signature="e#5143#5144#0" expanded="true" />
+            <element signature="e#5179#5180#0" expanded="true" />
+            <element signature="e#5219#5220#0" expanded="true" />
+            <element signature="e#5252#5253#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/sample/ExactSolution.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="79">
+          <caret line="7" lean-forward="true" selection-start-line="7" selection-end-line="7" />
+          <folding>
+            <element signature="imports" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/sample/ApproximationMethod.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="1423">
+          <caret line="90" column="7" lean-forward="true" selection-start-line="90" selection-start-column="7" selection-end-line="90" selection-end-column="7" />
+          <folding>
+            <element signature="imports" expanded="true" />
+            <element signature="e#1329#1330#0" expanded="true" />
+            <element signature="e#1390#1391#0" expanded="true" />
+            <element signature="e#1900#1901#0" expanded="true" />
+            <element signature="e#1931#1932#0" expanded="true" />
+            <element signature="e#2282#2283#0" expanded="true" />
+            <element signature="e#2313#2314#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/sample/SeriesBuilder.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="665">
+          <caret line="35" column="73" selection-start-line="35" selection-start-column="73" selection-end-line="35" selection-end-column="73" />
           <folding>
             <element signature="imports" expanded="true" />
           </folding>

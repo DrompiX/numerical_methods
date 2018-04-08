@@ -23,6 +23,9 @@ public abstract class ApproximationMethod extends SeriesBuilder {
         errorSeries = new Series<>();
     }
 
+    /**
+     * Add series to charts
+     */
     @Override
     void display() {
         hide();
@@ -30,6 +33,9 @@ public abstract class ApproximationMethod extends SeriesBuilder {
         errChart.getData().add(errorSeries);
     }
 
+    /**
+     * Remove series from charts
+     */
     @Override
     void hide() {
         chart.setAnimated(false);
@@ -40,10 +46,18 @@ public abstract class ApproximationMethod extends SeriesBuilder {
         chart.setAnimated(true);
     }
 
+    /**
+     * Given initial function
+     * @return f(x, y)
+     */
     double f(double x, double y) {
         return (Math.pow(y, 2) * Math.exp(x) + 2 * y);
     }
 
+    /**
+     * Computes error of approximation method
+     * @param exactY - exact solution array
+     */
     private void calculateError(double[] exactY) {
         maxError = 0;
         errorSeries.getData().clear();
@@ -59,6 +73,9 @@ public abstract class ApproximationMethod extends SeriesBuilder {
         return maxError;
     }
 
+    /**
+     * Set new values and recompute series for approximation method
+     */
     void setFields(double x0, double y0, double X, int N, double[] exactY) {
         this.x0 = x0;
         this.y0 = y0;
@@ -68,6 +85,10 @@ public abstract class ApproximationMethod extends SeriesBuilder {
         calculateError(exactY);
     }
 
+    /**
+     * Can method be displayed?
+     * @return true if yes, false - otherwise
+     */
     public boolean isFailed() {
         return isFailed;
     }

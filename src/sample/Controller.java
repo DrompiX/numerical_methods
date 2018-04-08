@@ -50,14 +50,12 @@ public class Controller implements Initializable {
     @Override
     public void initialize(URL url, ResourceBundle rb) {
         model = new SeriesModel(functionChart, errorChart, errorDepChart);
+        // Set initial values
         setFirstTabValues(1.7, -0.7, 9, 25);
         setSecondTabValues(25, 100);
         buildExact();
     }
 
-    /***
-     * This method builds a chart of the exact solution
-     */
     @FXML
     private void buildExact() {
         model.displayExact(exactCheckBox);
@@ -102,6 +100,10 @@ public class Controller implements Initializable {
             model.hideErrorDep(model.rKuttaDep);
     }
 
+    /**
+     * This method parses the range [N0; N1] from second tab's fields
+     * @return range of values
+     */
     private Pair<Integer, Integer> getRange() {
         int N0, N1;
         try {
@@ -118,6 +120,9 @@ public class Controller implements Initializable {
         }
     }
 
+    /**
+     * Updates all charts after some changes in initial conditions
+     */
     @FXML
     private void update() {
         boolean errorOccurred = false;
@@ -147,6 +152,9 @@ public class Controller implements Initializable {
         approxWithRungeKutta();
     }
 
+    /**
+     * Updates all error dependency charts in tab 2
+     */
     @FXML
     private void updateError() {
         buildEulerError();

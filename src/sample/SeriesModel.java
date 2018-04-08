@@ -44,11 +44,21 @@ public class SeriesModel {
         rKuttaDep.setName("R-Kutta error");
     }
 
+    /**
+     * Displays chart of exact solution
+     * @param cb checkbox corresponding to exact solution
+     */
     void displayExact(CheckBox cb) {
         if (cb.isSelected()) exactSolution.display();
         else exactSolution.hide();
     }
 
+    /**
+     * Displays chart of provided approximation method
+     * @param l - method's label
+     * @param am - given approximation method
+     * @param cb - checkbox for provided method
+     */
     void displayApproximation(Label l, ApproximationMethod am, CheckBox cb) {
         l.setTextFill(Color.web(normalColor));
         boolean methodFailed = am.isFailed();
@@ -63,6 +73,13 @@ public class SeriesModel {
         }
     }
 
+    /**
+     * Displays chart of error dependency from the number of grid steps
+     * for given approximation method
+     * @param am - given approximation method
+     * @param errorDep - error dependency series
+     * @param range - range for calculations [N0, N1]
+     */
     void displayErrorDep(ApproximationMethod am,
                          Series<Number, Number> errorDep,
                          Pair<Integer, Integer> range) {
@@ -87,6 +104,10 @@ public class SeriesModel {
         errorDepChart.setAnimated(true);
     }
 
+    /**
+     * Provides minimal possible number of N
+     * @return N
+     */
     int getMinimalN() {
         double maxH = 0.49;
         for (int i = 2; i < this.N; i++) {
@@ -95,6 +116,10 @@ public class SeriesModel {
         return this.N;
     }
 
+    /**
+     * Displays alert about some error
+     * @param text - error text
+     */
     void showError(String text) {
         Alert alert = new Alert(Alert.AlertType.ERROR);
         alert.setTitle("Error occurred");
@@ -103,6 +128,9 @@ public class SeriesModel {
         alert.showAndWait();
     }
 
+    /**
+     * Set new fields' values to recompute series
+     */
     void updateValues(double x0, double y0, double X, int N) {
         this.x0 = x0;
         this.y0 = y0;

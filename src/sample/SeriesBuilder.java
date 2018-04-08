@@ -31,6 +31,10 @@ public abstract class SeriesBuilder {
 
     abstract void hide();
 
+    /**
+     * Computational part of creating series
+     * @return true if series was successfully created, false - otherwise
+     */
     protected abstract boolean makeSeries();
 
 }
