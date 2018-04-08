@@ -160,7 +160,7 @@ public class Controller implements Initializable {
         } catch (Exception e) {
             showError(e.getMessage());
             setSecondTabValues(this.N0, this.N1);
-            System.out.println(e.getMessage());
+//            System.out.println(e.getMessage());
             return null;
         }
     }
@@ -198,7 +198,7 @@ public class Controller implements Initializable {
         } catch (Exception e) {
             setFirstTabValues(x0, y0, X, N);
             if (errorOccurred) return;
-            System.out.println(e.getMessage());
+//            System.out.println(e.getMessage());
             showError("Incorrect type of input data!");
             return;
         }

@@ -73,7 +73,7 @@
                            <items>
                               <LineChart fx:id="functionChart" layoutX="167.0" layoutY="1.0" legendSide="RIGHT" prefHeight="370.0" prefWidth="522.0" title="Functions" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="167.0" AnchorPane.rightAnchor="15.0" AnchorPane.topAnchor="5.0">
                                  <xAxis>
-                                    <NumberAxis label="x" side="BOTTOM" />
+                                    <NumberAxis forceZeroInRange="false" label="x" side="BOTTOM" />
                                  </xAxis>
                                  <yAxis>
                                     <NumberAxis label="y" side="LEFT" />
@@ -81,7 +81,7 @@
                               </LineChart>
                               <LineChart fx:id="errorChart" layoutX="10.0" layoutY="10.0" legendSide="RIGHT" prefHeight="370.0" prefWidth="522.0" title="Errors">
                                  <xAxis>
-                                    <NumberAxis label="x" side="BOTTOM" />
+                                    <NumberAxis forceZeroInRange="false" label="x" side="BOTTOM" />
                                  </xAxis>
                                  <yAxis>
                                     <NumberAxis label="error" side="LEFT" />
