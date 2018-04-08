@@ -31,6 +31,6 @@ public abstract class SeriesBuilder {
 
     abstract void hide();
 
-    protected abstract void makeSeries();
+    protected abstract boolean makeSeries();
 
 }

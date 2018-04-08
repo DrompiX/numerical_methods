@@ -16,15 +16,18 @@ public class EulerMethod extends ApproximationMethod {
     }
 
     @Override
-    protected void makeSeries() {
+    protected boolean makeSeries() {
         initialize();
 
-        for (int i = 0; i < N - 1; i++)
-            y[i + 1] = y[i] + h * f(x[i], y[i]);//(Math.pow(y[i], 2) * Math.exp(x[i]) + 2 * y[i]);
+        for (int i = 0; i < N - 1; i++) {
+            y[i + 1] = y[i] + h * f(x[i], y[i]);
+            if (y[i + 1] > failError) return false;
+        }
 
         methodSeries.getData().clear();
         for (int i = 0; i < N; i++)
             methodSeries.getData().add(new Data<>(x[i], y[i]));
+        return true;
     }
 
 }

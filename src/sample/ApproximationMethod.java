@@ -8,6 +8,8 @@ public abstract class ApproximationMethod extends SeriesBuilder {
     Series<Number, Number> errorSeries;
     private LineChart<Number, Number> errChart;
     private double maxError;
+    final double failError = 100.0;
+    boolean isFailed = false;
 
     ApproximationMethod() {
         super();
@@ -62,7 +64,7 @@ public abstract class ApproximationMethod extends SeriesBuilder {
         this.y0 = y0;
         this.X = X;
         this.N = N;
-        makeSeries();
+        isFailed = !makeSeries();
         calculateError(exactY);
     }
 

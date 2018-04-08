@@ -4,7 +4,6 @@ import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
 import javafx.scene.chart.LineChart;
 
-
 import java.net.URL;
 import java.util.ResourceBundle;
 
@@ -42,36 +41,36 @@ public class Controller implements Initializable {
     @FXML private TextField N0Field;
     @FXML private TextField N1Field;
 
-    private ExactSolution exactSolution;
-    private EulerMethod euler;
-    private ImprovedEulerMethod improvedEuler;
-    private RungeKuttaMethod rungeKutta;
-
-    private Series<Number, Number> eulerDep = new Series<>();
-    private Series<Number, Number> imEulerDep = new Series<>();
-    private Series<Number, Number> rKuttaDep = new Series<>();
-
-    private final double maxH = 0.49;
-    private double x0 = 1.7, y0 = -0.7, X = 9;
-    private int N = 25, N0 = 25, N1 = 100;
+//    private ExactSolution exactSolution;
+//    private EulerMethod euler;
+//    private ImprovedEulerMethod improvedEuler;
+//    private RungeKuttaMethod rungeKutta;
+//
+//    private Series<Number, Number> eulerDep = new Series<>();
+//    private Series<Number, Number> imEulerDep = new Series<>();
+//    private Series<Number, Number> rKuttaDep = new Series<>();
+//
+//    private final double maxH = 0.49;
+//    private double x0 = 1.7, y0 = -0.7, X = 9;
+//    private int N = 25, N0 = 25, N1 = 100;
 
     // Variant 23 - y^2*e^x - 2y, x in [1.7, 9]
 
     @Override
     public void initialize(URL url, ResourceBundle rb) {
-        exactSolution = new ExactSolution(functionChart);
-        euler = new EulerMethod(functionChart, errorChart);
-        improvedEuler = new ImprovedEulerMethod(functionChart, errorChart);
-        rungeKutta = new RungeKuttaMethod(functionChart, errorChart);
-
-        updateValues(x0, y0, X, N);
-        setFirstTabValues(1.7, -0.7, 9, 25);
-        setSecondTabValues(25, 100);
-        buildExact();
-
-        eulerDep.setName("Euler error");
-        imEulerDep.setName("Im.Euler error");
-        rKuttaDep.setName("R-Kutta error");
+//        exactSolution = new ExactSolution(functionChart);
+//        euler = new EulerMethod(functionChart, errorChart);
+//        improvedEuler = new ImprovedEulerMethod(functionChart, errorChart);
+//        rungeKutta = new RungeKuttaMethod(functionChart, errorChart);
+//
+//        updateValues(x0, y0, X, N);
+//        setFirstTabValues(1.7, -0.7, 9, 25);
+//        setSecondTabValues(25, 100);
+//        buildExact();
+//
+//        eulerDep.setName("Euler error");
+//        imEulerDep.setName("Im.Euler error");
+//        rKuttaDep.setName("R-Kutta error");
     }
 
     /***
@@ -85,20 +84,41 @@ public class Controller implements Initializable {
 
     @FXML
     private void approxWithEuler() {
-        if (eulerCheckBox.isSelected()) euler.display();
-        else euler.hide();
+        if (eulerCheckBox.isSelected() && !euler.isFailed)
+            euler.display();
+        else {
+//            if (euler.isFailed) {
+                eulerCheckBox.setSelected(false);
+//                showError("Euler can't be built, error goes to infinity.");
+//            }
+            euler.hide();
+        }
     }
 
     @FXML
     private void approxWithImprovedEuler() {
-        if (imprEulerCheckBox.isSelected()) improvedEuler.display();
-        else improvedEuler.hide();
+        if (imprEulerCheckBox.isSelected() && !improvedEuler.isFailed)
+            improvedEuler.display();
+        else {
+//            if (improvedEuler.isFailed) {
+                imprEulerCheckBox.setSelected(false);
+//                showError("Improved Euler can't be built, error goes to infinity.");
+//            }
+            improvedEuler.hide();
+        }
     }
 
     @FXML
     private void approxWithRungeKutta() {
-        if (rKuttaCheckBox.isSelected()) rungeKutta.display();
-        else rungeKutta.hide();
+        if (rKuttaCheckBox.isSelected() && !rungeKutta.isFailed)
+            rungeKutta.display();
+        else {
+//            if (rungeKutta.isFailed) {
+                rKuttaCheckBox.setSelected(false);
+//                showError("Runge-Kutta can't be built, error goes to infinity.");
+//            }
+            rungeKutta.hide();
+        }
     }
 
     @FXML
@@ -160,7 +180,6 @@ public class Controller implements Initializable {
         } catch (Exception e) {
             showError(e.getMessage());
             setSecondTabValues(this.N0, this.N1);
-//            System.out.println(e.getMessage());
             return null;
         }
     }
@@ -189,16 +208,15 @@ public class Controller implements Initializable {
                 throw new IllegalArgumentException("Invalid range [x0, X] or y0 >= 0");
             }
             // TODO: to manage incorrect N's
-            if ((X - x0) / N > maxH) {
-                showError("Invalid range, some chart may go to infinity!");
-                errorOccurred = true;
-                throw new IllegalArgumentException("Invalid range, chart goes to infinity");
-            }
+//            if ((X - x0) / N > maxH) {
+//                showError("Invalid range, some chart may go to infinity!");
+//                errorOccurred = true;
+//                throw new IllegalArgumentException("Invalid range, chart goes to infinity");
+//            }
             updateValues(x0, y0, X, N);
         } catch (Exception e) {
             setFirstTabValues(x0, y0, X, N);
             if (errorOccurred) return;
-//            System.out.println(e.getMessage());
             showError("Incorrect type of input data!");
             return;
         }

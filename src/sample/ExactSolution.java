@@ -13,8 +13,8 @@ public class ExactSolution extends SeriesBuilder {
         methodSeries.setName("Exact");
     }
 
-    double y(double x) {
-        return 3 * Math.pow(Math.E, 2 * x) / (C - Math.pow(Math.E, 3 * x));
+    private double y(double x) {
+        return 3 * Math.exp(2 * x) / (C - Math.exp(3 * x));
     }
 
     private void calculateConstant() {
@@ -33,7 +33,7 @@ public class ExactSolution extends SeriesBuilder {
     }
 
     @Override
-    protected void makeSeries() {
+    protected boolean makeSeries() {
         initialize();
 
         for (int i = 0; i < N; i++)
@@ -42,6 +42,7 @@ public class ExactSolution extends SeriesBuilder {
         methodSeries.getData().clear();
         for (int i = 0; i < N; i++)
             methodSeries.getData().add(new Data<>(x[i], y[i]));
+        return true;
     }
 
     double[] getY() {
