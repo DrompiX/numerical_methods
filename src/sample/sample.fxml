@@ -36,17 +36,17 @@
                                           <Font size="15.0" />
                                        </font>
                                     </Label>
-                                    <Label text="Euler" GridPane.rowIndex="1">
+                                    <Label fx:id="euLabel" text="Euler" GridPane.rowIndex="1">
                                        <font>
                                           <Font size="15.0" />
                                        </font>
                                     </Label>
-                                    <Label text="Improved Euler" GridPane.rowIndex="2">
+                                    <Label fx:id="imLabel" text="Improved Euler" GridPane.rowIndex="2">
                                        <font>
                                           <Font size="15.0" />
                                        </font>
                                     </Label>
-                                    <Label text="Runge-Kutta" GridPane.rowIndex="3">
+                                    <Label fx:id="rkLabel" text="Runge-Kutta" GridPane.rowIndex="3">
                                        <font>
                                           <Font size="15.0" />
                                        </font>
