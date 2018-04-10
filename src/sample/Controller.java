@@ -146,6 +146,10 @@ public class Controller implements Initializable {
             return;
         }
 
+        updateMethods();
+    }
+
+    private void updateMethods() {
         buildExact();
         approxWithEuler();
         approxWithImprovedEuler();
